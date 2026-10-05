@@ -1,0 +1,1564 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0F2847">
+<meta name="description" content="青埔房仲小賈的房產工具箱：房貸、青安 3.0、寬限期自救包、房地合一稅、預售屋換約檢查、稅務諮詢、繼承分配、學區與周邊機能。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2847'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3E%E8%B3%88%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<title>房產工具箱</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* 房產工具箱（獨立版）：單頁、六個工具以上方分頁切換。色票沿用官網藍色系，淺色／深色模式皆完整定義。 */
+:root{
+  --navy:#1C1C37; --navy-deep:#10101F; --orange:#0073D6; --gold:#1085BC; --white:#FFFFFF;
+  --bg:#F7FBFF; --surface:#E6F2FF; --surface-navy:#DBEDFF; --ink:#1C1C37; --ink-soft:#56667A; --line:#D0D5DA;
+  --shadow:0 16px 36px -28px rgba(16,30,50,.25);
+  --dark:#0F2847; --dark-deep:#081627; --dark-ink:#FFFFFF; --dark-ink-soft:rgba(255,255,255,.72); --dark-line:rgba(255,255,255,.14);
+  --hd-bg:rgba(247,251,255,.92);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#C7D9F0; --navy-deep:#E3EDFB; --orange:#4DA8E8; --gold:#7EC4EA;
+    --bg:#0C1420; --surface:#141F2E; --surface-navy:#192537; --ink:#E8F1FB; --ink-soft:#8FA3B8; --line:#25334A;
+    --shadow:0 16px 36px -24px rgba(0,0,0,.5); --hd-bg:rgba(12,20,32,.92); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#C7D9F0; --navy-deep:#E3EDFB; --orange:#4DA8E8; --gold:#7EC4EA;
+  --bg:#0C1420; --surface:#141F2E; --surface-navy:#192537; --ink:#E8F1FB; --ink-soft:#8FA3B8; --line:#25334A;
+  --shadow:0 16px 36px -24px rgba(0,0,0,.5); --hd-bg:rgba(12,20,32,.92); color-scheme:dark;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;font-size:16px;line-height:1.6;}
+a{color:inherit;}
+h1,h2,h3{margin:0;text-wrap:balance;}
+.wrap{max-width:1000px;margin-inline:auto;padding-inline:16px;}
+.mono{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;}
+
+/* 頁首與工具切換 */
+.app-top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.app-brand{display:flex;align-items:center;gap:10px;padding-block:12px 8px;}
+.app-brand .mark{flex:none;width:34px;height:34px;border-radius:9px;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.95rem;}
+.app-brand .name{font-weight:900;font-size:1.05rem;color:var(--navy-deep);line-height:1.2;}
+.app-brand .by{display:block;font-weight:500;font-size:.75rem;color:var(--ink-soft);}
+.app-nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.app-nav::-webkit-scrollbar{display:none;}
+.nav-tab{flex:none;font:inherit;font-size:.9rem;font-weight:700;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;min-height:40px;white-space:nowrap;}
+.nav-tab[aria-current="page"]{background:var(--orange);border-color:var(--orange);color:#fff;}
+.nav-tab:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+
+/* 按鈕 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:700;font-size:.95rem;padding:11px 18px;border-radius:12px;border:1px solid transparent;text-decoration:none;cursor:pointer;min-height:44px;}
+.btn-orange{background:var(--orange);color:#fff;}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px;}
+
+/* 頁尾 */
+.app-foot{margin-top:34px;padding-block:26px;background:var(--dark);color:#fff;font-size:.82rem;line-height:1.9;}
+.app-foot .wrap{display:flex;flex-direction:column;gap:6px;}
+.app-foot strong{font-weight:900;font-size:.95rem;}
+.app-foot .dim{color:var(--dark-ink-soft);}
+.app-foot a{color:#fff;font-weight:700;}
+.app-foot .tel{user-select:all;}
+
+/* 房產工具箱共用樣式：沿用 style.css 的色彩變數，淺色／深色模式自動跟隨 */
+.tool-page{padding:28px 0 64px;}
+.tool-page .breadcrumb{margin-bottom:14px;font-size:.9rem;}
+.tool-page .breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+.tool-page .breadcrumb a:hover{color:var(--orange);}
+.tool-head{margin-bottom:22px;}
+.tool-head .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--orange);margin-bottom:6px;}
+.tool-head h2{font-size:clamp(1.55rem,4.6vw,2.1rem);line-height:1.3;color:var(--navy-deep);}
+.tool-head p{margin:10px 0 0;color:var(--ink-soft);line-height:1.8;max-width:46em;}
+
+/* hub */
+.tool-groups h2{font-size:1.15rem;margin:30px 0 12px;color:var(--navy-deep);}
+.tool-grid{display:grid;gap:14px;grid-template-columns:1fr;}
+@media (min-width:700px){.tool-grid{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:1000px){.tool-grid{grid-template-columns:repeat(3,1fr);}}
+.tool-card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;box-shadow:var(--shadow);transition:transform .15s ease,border-color .15s ease;}
+.tool-card:hover{transform:translateY(-2px);border-color:var(--orange);}
+.tool-card .ti{font-size:1.7rem;line-height:1;}
+.tool-card h3{margin:10px 0 6px;font-size:1.05rem;color:var(--navy-deep);}
+.tool-card p{margin:0;font-size:.9rem;line-height:1.7;color:var(--ink-soft);}
+.tool-card .go{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:700;color:var(--orange);}
+
+/* panels & fields */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px;}
+.panel h2,.panel h3{font-size:1.05rem;margin:0 0 12px;color:var(--navy-deep);}
+.fields{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));}
+.field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:6px;color:var(--ink);}
+.field .hint{display:block;font-weight:400;color:var(--ink-soft);font-size:.78rem;margin-top:2px;}
+.field input,.field select{width:100%;font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);min-height:44px;}
+.field input:focus,.field select:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:var(--orange);}
+.unit-wrap{position:relative;}
+.unit-wrap input{padding-right:46px;}
+.unit-wrap .unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:.85rem;color:var(--ink-soft);pointer-events:none;}
+.seg{display:flex;flex-wrap:wrap;gap:8px;}
+.seg label{margin:0;cursor:pointer;}
+.seg input{position:absolute;opacity:0;pointer-events:none;}
+.seg span{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-size:.92rem;background:var(--bg);color:var(--ink);min-height:44px;line-height:22px;}
+.seg input:checked+span{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:700;}
+.seg input:focus-visible+span{outline:2px solid var(--orange);outline-offset:2px;}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+.actions .btn{cursor:pointer;font:inherit;}
+
+/* tabs */
+.tt-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.tt-tab{font:inherit;font-weight:700;font-size:.95rem;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;min-height:44px;}
+.tt-tab[aria-selected="true"]{background:var(--dark);border-color:var(--dark);color:#fff;}
+.tt-pane[hidden]{display:none;}
+
+/* results */
+.result{background:var(--dark);color:var(--dark-ink);border-radius:16px;padding:20px;margin-bottom:18px;}
+.result .lead{font-size:.85rem;color:var(--dark-ink-soft);margin-bottom:4px;}
+.result .big{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:clamp(1.8rem,7vw,2.6rem);font-weight:600;line-height:1.2;word-break:break-all;}
+.result .sub{font-size:.9rem;color:var(--dark-ink-soft);margin-top:6px;line-height:1.7;}
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:16px;}
+.kpi{border:1px solid var(--dark-line);border-radius:12px;padding:12px;background:rgba(255,255,255,.05);}
+.kpi .k{font-size:.78rem;color:var(--dark-ink-soft);}
+.kpi .v{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:1.1rem;font-weight:600;margin-top:2px;word-break:break-all;}
+.kpi.warn .v{color:#FFD28A;}
+.kpi.good .v{color:#9BE3B5;}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:700;}
+.pill.ok{background:#DCF5E5;color:#14532D;}
+.pill.no{background:#FDE2E2;color:#7F1D1D;}
+.pill.maybe{background:#FFF1CC;color:#7A4B00;}
+.verdict{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--dark-line);font-size:.95rem;line-height:1.6;}
+.verdict:last-child{border-bottom:none;}
+.verdict .pill{flex:none;margin-top:2px;}
+
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table.tbl{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px;}
+table.tbl th,table.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;}
+table.tbl th:first-child,table.tbl td:first-child{text-align:left;}
+table.tbl th{font-size:.78rem;color:var(--ink-soft);font-weight:700;}
+table.tbl td{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;}
+table.tbl td:first-child{font-family:inherit;}
+table.tbl tr.hl td{background:var(--surface-navy);font-weight:700;}
+
+.note{font-size:.82rem;line-height:1.8;color:var(--ink-soft);}
+.note strong{color:var(--ink);}
+.disclaimer{margin-top:22px;padding:14px 16px;border-left:4px solid var(--orange);background:var(--surface);border-radius:0 12px 12px 0;font-size:.82rem;line-height:1.8;color:var(--ink-soft);}
+.asof{display:inline-block;font-size:.78rem;color:var(--ink-soft);margin-top:8px;}
+.tool-cta{margin-top:26px;text-align:center;padding:22px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;}
+.tool-cta p{margin:0 0 4px;font-weight:700;color:var(--navy-deep);}
+.tool-cta .sm{font-weight:400;font-size:.88rem;color:var(--ink-soft);margin-bottom:12px;}
+.related{margin-top:22px;font-size:.9rem;}
+.related a{color:var(--orange);font-weight:700;text-decoration:none;margin-right:14px;display:inline-block;padding:4px 0;}
+
+/* checklist */
+.chk-progress{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin:6px 0 4px;}
+.chk-progress>i{display:block;height:100%;width:0;background:var(--orange);transition:width .25s ease;}
+.chk-item{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:12px;overflow:hidden;}
+.chk-item>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:14px 16px;font-weight:700;color:var(--navy-deep);min-height:52px;}
+.chk-item>summary::-webkit-details-marker{display:none;}
+.chk-item .no{flex:none;width:30px;height:30px;border-radius:50%;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.chk-item .cnt{margin-left:auto;font-size:.8rem;font-weight:400;color:var(--ink-soft);}
+.chk-body{padding:2px 16px 14px;}
+.chk-body .why{font-size:.85rem;color:var(--ink-soft);line-height:1.8;margin:0 0 8px;}
+.chk-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line);font-size:.93rem;line-height:1.7;}
+.chk-row input{flex:none;width:22px;height:22px;margin-top:3px;accent-color:var(--orange);}
+.chk-row label{cursor:pointer;}
+.chk-row .where{display:block;font-size:.8rem;color:var(--ink-soft);}
+
+
+/* 法規檢查結果 */
+.gate{border-radius:16px;padding:16px 18px;margin-bottom:18px;border:1px solid;line-height:1.85;font-size:.93rem;}
+.gate.ok{background:#E3F5EA;border-color:#8CCBA3;color:#10432A;}
+.gate.warn{background:#FFF3D1;border-color:#E6C46A;color:#5E3B00;}
+.gate.stop{background:#FDE7E7;border-color:#E39A9A;color:#6B1414;}
+
+.tool-page{padding:20px 0 8px;}
+</style>
+<div class="app-top">
+  <div class="wrap">
+    <div class="app-brand"><span class="mark" aria-hidden="true">賈</span><span class="name">房產工具箱<span class="by">青埔房仲小賈</span></span></div>
+    <nav class="app-nav" aria-label="工具選單">
+      <button type="button" class="nav-tab" data-go="calc">房貸計算機</button>
+      <button type="button" class="nav-tab" data-go="qingan">青安 3.0</button>
+      <button type="button" class="nav-tab" data-go="grace">寬限期試算</button>
+      <button type="button" class="nav-tab" data-go="rescue">寬限期自救包</button>
+      <button type="button" class="nav-tab" data-go="tax">房地合一稅</button>
+      <button type="button" class="nav-tab" data-go="presale">預售屋換約</button>
+      <button type="button" class="nav-tab" data-go="consult">稅務諮詢</button>
+      <button type="button" class="nav-tab" data-go="inherit">繼承分配</button>
+      <button type="button" class="nav-tab" data-go="school">青埔學區</button>
+      <button type="button" class="nav-tab" data-go="poi">周邊機能地圖</button>
+      <button type="button" class="nav-tab" data-go="check6">中古屋查核</button>
+    </nav>
+  </div>
+</div>
+<main class="tool-page" id="main">
+  <div class="wrap">
+<section class="tool" id="tool-calc" data-tool="calc" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">房貸・稅費・持有成本</span>
+    <h2>萬能房產計算機</h2>
+    <p>買房前最常算的三件事：每月要繳多少、手上要準備多少現金、買了之後每年要花多少。填數字就即時算，不用註冊、不留資料。</p>
+  </header>
+<div id="calcApp">
+  <div class="tt-tabs" role="tablist" aria-label="試算項目">
+    <button type="button" class="tt-tab" role="tab">① 房貸試算</button>
+    <button type="button" class="tt-tab" role="tab">② 買房要準備多少現金</button>
+    <button type="button" class="tt-tab" role="tab">③ 每年持有成本</button>
+  </div>
+
+  <section class="tt-pane" aria-label="房貸試算">
+    <div class="panel" id="f1">
+      <div class="fields">
+        <div class="field"><label for="loan">貸款金額<span class="hint">向銀行借的總額</span></label><div class="unit-wrap"><input id="loan" type="number" inputmode="decimal" min="0" step="10" value="1000"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="rate">年利率<span class="hint">以銀行核貸利率為準</span></label><div class="unit-wrap"><input id="rate" type="number" inputmode="decimal" min="0" step="0.01" value="2.2"><span class="unit">%</span></div></div>
+        <div class="field"><label for="years">貸款年限</label><div class="unit-wrap"><input id="years" type="number" inputmode="numeric" min="1" max="40" step="1" value="30"><span class="unit">年</span></div></div>
+        <div class="field"><label for="grace">寬限期<span class="hint">只繳息、不還本金；名下已有房貸的第二戶以上，央行規定無寬限期</span></label><select id="grace"><option value="0">無寬限期</option><option value="1">1 年</option><option value="2">2 年</option><option value="3">3 年</option><option value="4">4 年</option><option value="5">5 年</option></select></div>
+      </div>
+      <div class="field" style="margin-top:14px;"><label>還款方式</label>
+        <div class="seg">
+          <label><input type="radio" name="m1" value="equal" checked><span>本息平均攤還（每月金額固定）</span></label>
+          <label><input type="radio" name="m1" value="principal"><span>本金平均攤還（前高後低）</span></label>
+        </div>
+      </div>
+    </div>
+    <div id="r1"></div>
+  </section>
+
+  <section class="tt-pane" aria-label="買房現金準備">
+    <div class="panel" id="f2">
+      <div class="fields">
+        <div class="field"><label for="b_who">購屋身分<span class="hint">央行信用管制：第二戶上限 7 成（2026/9/18 起），第三戶以上與高價住宅 3 成</span></label>
+          <select id="b_who"><option value="80">第一戶（成數依銀行審核）</option><option value="70">第二戶（上限 7 成）</option><option value="30">第三戶以上／高價住宅／公司（上限 3 成）</option></select></div>
+        <div class="field"><label for="b_price">成交總價</label><div class="unit-wrap"><input id="b_price" type="number" inputmode="decimal" min="0" step="10" value="1500"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_ltv">貸款成數</label><div class="unit-wrap"><input id="b_ltv" type="number" inputmode="decimal" min="0" max="100" step="1" value="80"><span class="unit">%</span></div></div>
+        <div class="field"><label for="b_rv">房屋評定現值<span class="hint">看房屋稅單或詢問賣方；新成屋常見約佔成交價 1～2 成</span></label><div class="unit-wrap"><input id="b_rv" type="number" inputmode="decimal" min="0" step="1" value="150"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_land">土地公告現值（持分總額）<span class="hint">看土地謄本或地政電傳，算印花稅用</span></label><div class="unit-wrap"><input id="b_land" type="number" inputmode="decimal" min="0" step="10" value="300"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_reg">土地申報地價（持分總額）<span class="hint">算登記規費用</span></label><div class="unit-wrap"><input id="b_reg" type="number" inputmode="decimal" min="0" step="10" value="100"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_deed">代書費<span class="hint">依案件而定，可自行調整</span></label><div class="unit-wrap"><input id="b_deed" type="number" inputmode="decimal" min="0" step="0.5" value="2"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_bank">銀行開辦／徵信費</label><div class="unit-wrap"><input id="b_bank" type="number" inputmode="decimal" min="0" step="0.1" value="0.5"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_agent">買方服務費<span class="hint">依委託契約約定，沒有就填 0</span></label><div class="unit-wrap"><input id="b_agent" type="number" inputmode="decimal" min="0" step="0.1" value="1"><span class="unit">%</span></div></div>
+        <div class="field"><label for="b_ins">火災＋地震險（首年）</label><div class="unit-wrap"><input id="b_ins" type="number" inputmode="decimal" min="0" step="0.1" value="0.6"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="b_other">裝潢、搬家、家電預算</label><div class="unit-wrap"><input id="b_other" type="number" inputmode="decimal" min="0" step="1" value="0"><span class="unit">萬元</span></div></div>
+      </div>
+    </div>
+    <div id="r2"></div>
+  </section>
+
+  <section class="tt-pane" aria-label="每年持有成本">
+    <div class="panel" id="f3">
+      <div class="fields">
+        <div class="field"><label for="h_rv">房屋評定現值</label><div class="unit-wrap"><input id="h_rv" type="number" inputmode="decimal" min="0" step="1" value="150"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="h_type">房屋稅稅率</label>
+          <select id="h_type"><option value="1.2">自住（1.2%）</option><option value="1.0">全國單一自住（1.0%）</option><option value="custom">非自住（自訂稅率）</option></select></div>
+        <div class="field" id="h_rate_wrap" hidden><label for="h_rate">非自住稅率<span class="hint">法定區間 2%～4.8%，依縣市公告</span></label><div class="unit-wrap"><input id="h_rate" type="number" inputmode="decimal" min="0" step="0.1" value="2.0"><span class="unit">%</span></div></div>
+        <div class="field"><label for="h_land">地價稅（每年）<span class="hint">看稅單或估算</span></label><div class="unit-wrap"><input id="h_land" type="number" inputmode="decimal" min="0" step="500" value="4000"><span class="unit">元</span></div></div>
+        <div class="field"><label for="h_mgmt">管理費（每月）</label><div class="unit-wrap"><input id="h_mgmt" type="number" inputmode="decimal" min="0" step="100" value="2500"><span class="unit">元</span></div></div>
+        <div class="field"><label for="h_park">車位管理費（每月）</label><div class="unit-wrap"><input id="h_park" type="number" inputmode="decimal" min="0" step="100" value="0"><span class="unit">元</span></div></div>
+        <div class="field"><label for="h_ins">火災＋地震險（每年）</label><div class="unit-wrap"><input id="h_ins" type="number" inputmode="decimal" min="0" step="500" value="5000"><span class="unit">元</span></div></div>
+        <div class="field"><label for="h_fix">維修預備金（每年）</label><div class="unit-wrap"><input id="h_fix" type="number" inputmode="decimal" min="0" step="1000" value="20000"><span class="unit">元</span></div></div>
+        <div class="field"><label for="h_loan">貸款金額（算房貸利息用）</label><div class="unit-wrap"><input id="h_loan" type="number" inputmode="decimal" min="0" step="10" value="1200"><span class="unit">萬元</span></div></div>
+        <div class="field"><label for="h_irate">貸款年利率</label><div class="unit-wrap"><input id="h_irate" type="number" inputmode="decimal" min="0" step="0.01" value="2.2"><span class="unit">%</span></div></div>
+      </div>
+    </div>
+    <div id="r3"></div>
+  </section>
+</div>
+<p class="note" style="margin-top:14px;"><strong>規則整理時間：</strong>2026 年 10 月。房屋稅自住稅率與非自住法定區間依現行房屋稅條例；契稅（房屋評定現值 × 6%）、印花稅（（土地公告現值＋房屋評定現值）× 0.1%）、登記規費（（申報地價＋房屋評定現值）× 0.1%）依一般算法概估，實際金額以稅單與代書試算為準。貸款成數：央行 2026/9/17 公告，自然人第二戶上限由 6 成調為 7 成（無寬限期），第三戶以上、高價住宅與公司法人 3 成維持不變；第一戶無央行成數上限，依銀行審核。</p>
+  <div class="disclaimer">本工具為概算與資訊整理，不構成稅務、法律或投資建議；實際稅額、貸款條件與資格以主管機關、金融機構及個案核定為準。</div>
+</section>
+<section class="tool" id="tool-qingan" data-tool="qingan" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">青年安心成家購屋優惠貸款</span>
+    <h2>青安 3.0 資格檢測</h2>
+    <p>青安 3.0 自 2026 年 8 月 1 日起受理申請（至 2029 年 7 月 31 日），新增年齡、所得、房價上限三道門檻。填幾個條件，馬上知道符不符合、能借多少、前幾年月付多少。</p>
+  </header>
+<div class="panel" id="qf">
+  <h2>你的條件</h2>
+  <div class="fields">
+    <div class="field"><label for="q_age">申貸時年齡</label><div class="unit-wrap"><input id="q_age" type="number" inputmode="numeric" min="18" max="99" step="1" value="32"><span class="unit">歲</span></div></div>
+    <div class="field"><label for="q_inc">本人年所得總額<span class="hint">不是家戶合計，只算借款人本人</span></label><div class="unit-wrap"><input id="q_inc" type="number" inputmode="decimal" min="0" step="10" value="120"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="q_city">房屋所在縣市<span class="hint">括號為房價上限；桃園市依「其他縣市」判讀</span></label>
+      <select id="q_city">
+        <option value="3500">台北市（3,500 萬）</option>
+        <option value="2500">新北市（2,500 萬）</option>
+        <option value="2500">新竹縣市（2,500 萬）</option>
+        <option value="2000" selected>桃園市（2,000 萬）</option>
+        <option value="2000">其他縣市（2,000 萬）</option>
+      </select></div>
+    <div class="field"><label for="q_price">預計購屋總價</label><div class="unit-wrap"><input id="q_price" type="number" inputmode="decimal" min="0" step="10" value="1800"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="q_term">貸款年限<span class="hint" id="q_term_hint"></span></label><div class="unit-wrap"><input id="q_term" type="number" inputmode="numeric" min="1" max="40" step="1" value="40"><span class="unit">年</span></div></div>
+    <div class="field"><label for="q_grace">寬限期<span class="hint">最長 5 年，只繳利息</span></label><select id="q_grace"><option value="0">無寬限期</option><option value="1">1 年</option><option value="2">2 年</option><option value="3">3 年</option><option value="4">4 年</option><option value="5" selected>5 年</option></select></div>
+  </div>
+  <div class="field" style="margin-top:14px;"><label>你和家人的狀況（影響貸款額度）</label>
+    <div class="seg">
+      <label><input type="radio" name="q_fam" value="gen" checked><span>一般（上限 1,000 萬）</span></label>
+      <label><input type="radio" name="q_fam" value="wed"><span>新婚（申貸前 2 年內登記，上限 1,200 萬）</span></label>
+      <label><input type="radio" name="q_fam" value="kid"><span>育有未成年子女（上限 1,500 萬）</span></label>
+    </div>
+  </div>
+  <div class="fields" style="margin-top:14px;">
+    <div class="field"><label>本人、配偶、未成年子女名下都沒有自有住宅？</label>
+      <div class="seg"><label><input type="radio" name="q_nh" value="1" checked><span>是，都沒有</span></label><label><input type="radio" name="q_nh" value="0"><span>否，有房子</span></label></div></div>
+    <div class="field"><label>過去是否用過青安貸款？<span class="hint">青安限貸一次</span></label>
+      <div class="seg"><label><input type="radio" name="q_used" value="0" checked><span>沒用過</span></label><label><input type="radio" name="q_used" value="1"><span>用過</span></label></div></div>
+  </div>
+</div>
+<div id="qr"></div>
+<p class="note"><strong>方案重點（2026 年 10 月整理）：</strong>貸款成數最高 8 成、年限最長 40 年、寬限期最長 5 年；利率前 3 年補貼後 1.775%，第 4 至 6 年補貼逐年遞減（1.9%、2.025%、2.15%），第 7 年起回到基準利率；一段式機動利率。</p>
+  <div class="disclaimer">規則整理自行政院公告與主要媒體報導（2026 年 10 月）。桃園市在公開資料中未單獨列出房價上限，本工具依「其他縣市」2,000 萬元判讀；「無自有住宅」「自住」等細部條件請以公股銀行最新公告與審核為準。利息補貼期滿後（第 7 年起）以基準利率 2.275% 假設，機動利率會隨央行調整，月付金僅供概算。</div>
+</section>
+<section class="tool" id="tool-grace" data-tool="grace" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">房貸寬限期</span>
+    <h2>寬限期到期試算器</h2>
+    <p>寬限期內只繳利息很輕鬆，但到期後要開始還本金，月付通常會大幅跳升。先算清楚會跳多少，再比較四條可以走的路。</p>
+  </header>
+<div class="panel" id="gf">
+  <h2>你的貸款條件</h2>
+  <div class="fields">
+    <div class="field"><label for="g_loan">貸款金額（寬限期內沒還本金）</label><div class="unit-wrap"><input id="g_loan" type="number" inputmode="decimal" min="0" step="10" value="1000"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="g_rate">目前年利率</label><div class="unit-wrap"><input id="g_rate" type="number" inputmode="decimal" min="0" step="0.01" value="2.3"><span class="unit">%</span></div></div>
+    <div class="field"><label for="g_total">貸款總年限</label><div class="unit-wrap"><input id="g_total" type="number" inputmode="numeric" min="1" max="40" step="1" value="30"><span class="unit">年</span></div></div>
+    <div class="field"><label for="g_grace">寬限期</label><div class="unit-wrap"><input id="g_grace" type="number" inputmode="numeric" min="1" max="10" step="1" value="5"><span class="unit">年</span></div></div>
+  </div>
+  <h2 style="margin-top:20px;">另外三條路的條件（可自行調整）</h2>
+  <div class="fields">
+    <div class="field"><label for="g_ext">路線二：延長總年限至<span class="hint">多數銀行上限 40 年，需銀行同意</span></label><div class="unit-wrap"><input id="g_ext" type="number" inputmode="numeric" min="1" max="40" step="1" value="40"><span class="unit">年</span></div></div>
+    <div class="field"><label for="g_pre">路線三：到期時先還本金<span class="hint">手上有多少資金可以一次還</span></label><div class="unit-wrap"><input id="g_pre" type="number" inputmode="decimal" min="0" step="10" value="100"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="g_rate2">路線四：轉貸後年利率</label><div class="unit-wrap"><input id="g_rate2" type="number" inputmode="decimal" min="0" step="0.01" value="2.0"><span class="unit">%</span></div></div>
+    <div class="field"><label for="g_fee">路線四：轉貸總費用<span class="hint">違約金、設定費、手續費等</span></label><div class="unit-wrap"><input id="g_fee" type="number" inputmode="decimal" min="0" step="0.5" value="3"><span class="unit">萬元</span></div></div>
+  </div>
+</div>
+<div id="gr"></div>
+<div class="panel">
+  <h3>寬限期結束前 12 個月，建議這樣做</h3>
+  <ol class="note" style="padding-left:1.3em;margin:0;">
+    <li><strong>先查數字：</strong>向銀行確認剩餘本金、寬限期到期日、到期後的月付金額。</li>
+    <li><strong>評估現金流：</strong>用上表月付金額，對照收入與其他支出，確認能不能長期負擔。</li>
+    <li><strong>主動跟銀行談：</strong>是否可延長年限、再申請寬限、部分提前還款，都要在到期前問清楚。</li>
+    <li><strong>比價轉貸：</strong>有其他銀行方案時，用路線四算回本月數，再決定值不值得。</li>
+    <li><strong>備好資料：</strong>薪資證明、扣繳憑單、財力證明，轉貸或談條件時會用到。</li>
+  </ol>
+</div>
+  <div class="disclaimer">本試算以固定利率、寬限期內未還本金為前提；延長年限、再申請寬限、轉貸、提前還本是否可行及費用，均依各銀行審核與合約約定而定。轉貸費用請以新舊銀行實際報價為準。</div>
+</section>
+<section class="tool" id="tool-rescue" data-tool="rescue" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">房貸寬限期到期前</span>
+    <h2>寬限期自救包</h2>
+    <p>到期前 6 到 12 個月就要開始處理。三個步驟：先判斷哪條路走得通、再照話術去跟銀行談、最後算轉貸划不划算。</p>
+  </header>
+<div class="panel" id="rf">
+  <h2>步驟一：你的狀況，哪條路走得通？</h2>
+  <div class="fields">
+    <div class="field"><label for="r_loan">貸款餘額<span class="hint">寬限期內沒還本金，通常等於原貸款額</span></label><div class="unit-wrap"><input id="r_loan" type="number" inputmode="decimal" min="0" step="10" value="1000"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="r_rate">目前年利率</label><div class="unit-wrap"><input id="r_rate" type="number" inputmode="decimal" min="0" step="0.01" value="2.3"><span class="unit">%</span></div></div>
+    <div class="field"><label for="r_left">寬限期結束後，還要還幾年<span class="hint">合約剩餘的本息攤還年限</span></label><div class="unit-wrap"><input id="r_left" type="number" inputmode="numeric" min="1" max="40" step="1" value="25"><span class="unit">年</span></div></div>
+    <div class="field"><label for="r_income">每月房貸最多能負擔<span class="hint">扣掉生活費後，穩定付得起的金額</span></label><div class="unit-wrap"><input id="r_income" type="number" inputmode="decimal" min="0" step="1000" value="40000"><span class="unit">元</span></div></div>
+    <div class="field"><label for="r_max">銀行最長可延到<span class="hint">寬限期後的剩餘年限上限，向銀行確認</span></label><div class="unit-wrap"><input id="r_max" type="number" inputmode="numeric" min="1" max="40" step="1" value="35"><span class="unit">年</span></div></div>
+    <div class="field"><label for="r_cash">可以拿來先還本金的現金</label><div class="unit-wrap"><input id="r_cash" type="number" inputmode="decimal" min="0" step="10" value="100"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="r_rate2">他行可能談到的利率<span class="hint">不確定就填目前利率</span></label><div class="unit-wrap"><input id="r_rate2" type="number" inputmode="decimal" min="0" step="0.01" value="2.0"><span class="unit">%</span></div></div>
+  </div>
+</div>
+<div id="rr"></div>
+
+<div class="panel">
+  <h2>步驟二：跟銀行談，照這樣說</h2>
+  <p class="note" style="margin-top:0;">點開話術，把 ____ 換成你的資料。談話時記下承辦姓名與日期，要求書面報價，當下不用急著答應。</p>
+  <div id="scripts"></div>
+</div>
+
+<div class="panel" id="cf">
+  <h2>步驟三：轉貸費用明細，多久回本？</h2>
+  <p class="note" style="margin-top:0;">下面金額是範例，請改成兩家銀行的實際報價。</p>
+  <div class="fields">
+    <div class="field"><label for="c_old">原銀行提前清償違約金<span class="hint">看合約條款，沒有就填 0</span></label><div class="unit-wrap"><input id="c_old" type="number" inputmode="decimal" min="0" step="0.5" value="0"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="c_open">新銀行開辦／手續費</label><div class="unit-wrap"><input id="c_open" type="number" inputmode="decimal" min="0" step="0.1" value="0.5"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="c_val">鑑價費</label><div class="unit-wrap"><input id="c_val" type="number" inputmode="decimal" min="0" step="0.1" value="0.3"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="c_clerk">地政士（代書）費</label><div class="unit-wrap"><input id="c_clerk" type="number" inputmode="decimal" min="0" step="0.1" value="1.5"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="c_mult">新抵押權設定金額（貸款的幾倍）<span class="hint">銀行常設為 1.2 倍，依銀行而定</span></label><div class="unit-wrap"><input id="c_mult" type="number" inputmode="decimal" min="1" step="0.1" value="1.2"><span class="unit">倍</span></div></div>
+    <div class="field"><label for="c_other">其他（塗銷、規費、保險等）</label><div class="unit-wrap"><input id="c_other" type="number" inputmode="decimal" min="0" step="0.1" value="0.2"><span class="unit">萬元</span></div></div>
+  </div>
+  <div id="cr"></div>
+</div>
+  <div class="disclaimer">本工具為概算，假設固定利率。延長年限、再申請寬限、部分還本、轉貸能否成立與費用，全部依各銀行審核及貸款合約而定；轉貸屬於新貸款，名下已有其他房貸者可能受央行選擇性信用管制限制（第二戶以上無寬限期），請先向銀行確認。話術是溝通範本，不代表銀行一定同意。</div>
+</section>
+<section class="tool" id="tool-tax" data-tool="tax" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">賣房稅務試算</span>
+    <h2>房地合一稅 2.0 試算</h2>
+    <p>賣房最在意的稅：持有多久、賺了多少、能不能用自住優惠、換屋能退多少。填入買賣資料，一次看清楚。</p>
+  </header>
+<div class="panel" id="tf">
+  <h2>買賣資料</h2>
+  <div class="field"><label>賣方身分</label>
+    <div class="seg"><label><input type="radio" name="t_who" value="p" checked><span>個人</span></label><label><input type="radio" name="t_who" value="c"><span>營利事業（公司）</span></label></div></div>
+  <div class="fields" style="margin-top:14px;">
+    <div class="field"><label for="t_acq">取得日<span class="hint">買進契約簽訂日（預售屋為與建商簽約日）</span></label><input id="t_acq" type="date" value="2019-09-01"></div>
+    <div class="field"><label for="t_sold">出售日<span class="hint">賣出契約簽訂日，可輸入預計日期</span></label><input id="t_sold" type="date"></div>
+    <div class="field"><label for="t_sale">出售價格</label><div class="unit-wrap"><input id="t_sale" type="number" inputmode="decimal" min="0" step="10" value="2000"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="t_cost">取得價格</label><div class="unit-wrap"><input id="t_cost" type="number" inputmode="decimal" min="0" step="10" value="1500"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="t_cfee">取得時相關費用<span class="hint">契稅、印花稅、代書、規費、仲介費等（須有憑證）</span></label><div class="unit-wrap"><input id="t_cfee" type="number" inputmode="decimal" min="0" step="1" value="30"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="t_sfee">出售時相關費用<span class="hint">仲介費、代書費、裝修（須有憑證）</span></label><div class="unit-wrap"><input id="t_sfee" type="number" inputmode="decimal" min="0" step="1" value="80"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="t_land">土地漲價總數額<span class="hint">看土地增值稅試算的「漲價總數額」，不是稅額；沒有就填 0</span></label><div class="unit-wrap"><input id="t_land" type="number" inputmode="decimal" min="0" step="1" value="0"><span class="unit">萬元</span></div></div>
+  </div>
+  <div class="field" style="margin-top:14px;"><label>出售費用沒有憑證？</label>
+    <div class="seg"><label><input type="radio" name="t_nofee" value="0" checked><span>有憑證，照填的金額</span></label><label><input type="radio" name="t_nofee" value="1"><span>無憑證，按成交價 3%（上限 30 萬）估算</span></label></div></div>
+  <div id="t_pers">
+    <div class="field" style="margin-top:14px;"><label>自住優惠（400 萬免稅額）<span class="hint">本人、配偶或未成年子女設籍，並持有加居住連續滿 6 年；出售前 6 年內無出租或營業；6 年內沒用過此優惠</span></label>
+      <div class="seg"><label><input type="radio" name="t_self" value="0" checked><span>不適用或不確定</span></label><label><input type="radio" name="t_self" value="1"><span>符合，要適用</span></label></div></div>
+    <div class="field" style="margin-top:14px;"><label>換屋重購退稅<span class="hint">出售與重購兩筆交易的移轉登記日差 2 年內；兩間房屋，本人、配偶或未成年子女都須設籍並居住、無出租或營業；重購須登記在本人或配偶名下</span></label>
+      <div class="seg"><label><input type="radio" name="t_re" value="0" checked><span>沒有重購</span></label><label><input type="radio" name="t_re" value="1"><span>有重購新屋</span></label></div></div>
+    <div class="fields" id="t_re_wrap" style="margin-top:14px;" hidden>
+      <div class="field"><label for="t_reprice">重購價額（新屋房地價格）</label><div class="unit-wrap"><input id="t_reprice" type="number" inputmode="decimal" min="0" step="10" value="2500"><span class="unit">萬元</span></div></div>
+    </div>
+  </div>
+</div>
+<div id="tr"></div>
+<div class="panel">
+  <h3>重點提醒</h3>
+  <ul class="note" style="padding-left:1.3em;margin:0;">
+    <li><strong>申報期限：</strong>所有權移轉登記日的次日起 30 日內，須向國稅局申報，逾期有罰款。</li>
+    <li><strong>持有期間：</strong>以買進與賣出的契約簽訂日計算，超過才進入下一級（例如滿 2 年「又 1 天」才適用 35%）。</li>
+    <li><strong>申請方式：</strong>先賣後買，在重購移轉登記次日起 5 年內申請退稅；先買後賣，在申報出售房地合一稅時按比率扣抵。</li>
+    <li><strong>重購後限制：</strong>重購的自住房地，5 年內不能出租、營業或再次移轉，否則會被追繳退稅。</li>
+    <li><strong>虧損：</strong>出售若有虧損，可在 10 年內用其他房地合一所得扣除，不能退稅。</li>
+  </ul>
+</div>
+  <div class="disclaimer">本試算依房地合一稅 2.0（2026 年 10 月整理）概算，僅適用 105 年 1 月 1 日以後取得的房地；土地漲價總數額須先經土地增值稅試算取得。自住優惠與重購退稅的適用條件需經國稅局核定，個人設籍、出租與過去使用優惠的紀錄各不相同，簽約前請務必與會計師或國稅局確認。</div>
+</section>
+<section class="tool" id="tool-presale" data-tool="presale" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">預售屋・新建成屋轉讓</span>
+    <h2>預售屋換約速算</h2>
+    <p>2023 年 7 月 1 日起簽訂的預售屋與新建成屋買約，原則上簽約後不能換約或轉售。這個工具先做「第一關：能不能換約」，通過了才會往下算賣方實拿多少、要繳多少稅。</p>
+  </header>
+<div class="panel" id="pf">
+  <h2>第一關：這份買約可以換約嗎？</h2>
+  <div class="fields">
+    <div class="field"><label for="p_acq">取得買約日<span class="hint">與建商簽約日；承接他人換約而來的，填你承接買約的日期。也是房地合一稅的持有期間起算日</span></label><input id="p_acq" type="date" value="2022-06-01"></div>
+    <div class="field"><label for="p_sold">預計換約簽約日</label><input id="p_sold" type="date"></div>
+  </div>
+  <div class="field" style="margin-top:14px;"><label>是否屬於法律允許讓與的情形？<span class="hint">2023/7/1 起簽訂的買約，只有下列情形可以讓與</span></label>
+    <div class="seg">
+      <label><input type="radio" name="p_exc" value="none" checked><span>都不是</span></label>
+      <label><input type="radio" name="p_exc" value="rel"><span>轉給配偶、直系血親、二親等內旁系血親</span></label>
+      <label><input type="radio" name="p_exc" value="appr"><span>中央公告的特殊情形，且已取得縣市政府核准</span></label>
+    </div>
+  </div>
+</div>
+<div id="pg"></div>
+<div class="panel" id="pf2">
+  <h2>換約資料</h2>
+  <div class="fields">
+    <div class="field"><label for="p_total">原買賣總價<span class="hint">你與建商簽約的總價</span></label><div class="unit-wrap"><input id="p_total" type="number" inputmode="decimal" min="0" step="10" value="1500"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="p_paid">目前已付款（含訂金、簽約款、工程款）</label><div class="unit-wrap"><input id="p_paid" type="number" inputmode="decimal" min="0" step="10" value="150"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="p_new">換約總價<span class="hint">新買方承接的買賣總價（含你已付的款項）</span></label><div class="unit-wrap"><input id="p_new" type="number" inputmode="decimal" min="0" step="10" value="1700"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="p_swap">換約費（建商收取）<span class="hint">依建案契約，沒有就填 0</span></label><div class="unit-wrap"><input id="p_swap" type="number" inputmode="decimal" min="0" step="1" value="3"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="p_agent">仲介費</label><div class="unit-wrap"><input id="p_agent" type="number" inputmode="decimal" min="0" step="1" value="20"><span class="unit">萬元</span></div></div>
+  </div>
+  <div class="field" style="margin-top:14px;"><label>費用有沒有憑證？</label>
+    <div class="seg"><label><input type="radio" name="p_nofee" value="0" checked><span>有憑證，換約費＋仲介費</span></label><label><input type="radio" name="p_nofee" value="1"><span>無憑證，按實收價金 3%（上限 30 萬）估算</span></label></div></div>
+</div>
+<div id="pr"></div>
+  <div class="disclaimer">法規依據：平均地權條例第 47-4 條（禁止讓與或轉售預售屋、新建成屋買賣契約）、第 81-3 條（罰則），2026 年 10 月核對全國法規資料庫。可讓與的特殊情形與核准方式以內政部公告為準，各縣市審核認定不同；本工具不能取代法律意見。稅務部分以個人賣方、依房地合一稅 2.0 概算，預售屋換約的收入以「實際收取價金」認列，換約費能否列為費用與無憑證時 3%（上限 30 萬）的估算方式仍須依國稅局核定，持有期間以賣方與建商的簽約日起算。</div>
+</section>
+<section class="tool" id="tool-consult" data-tool="consult" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">稅務案型分流</span>
+    <h2>房產稅務諮詢</h2>
+    <p>先選你現在的情況，我把這個案型最常碰到的稅、現行規定和常見的雷整理給你，並指向可以直接試算的工具。</p>
+  </header>
+<div class="panel" id="sf">
+  <h2>你的情況是哪一種？</h2>
+  <div class="seg" role="radiogroup" aria-label="案型" id="caseSeg"></div>
+</div>
+<div id="sr"></div>
+  <div class="disclaimer">本頁為一般性資訊整理（規則核對至 2026 年 10 月），不構成稅務或法律意見。每個人的持有時間、設籍、出租與過去使用優惠的紀錄各不相同，簽約前請與會計師、地政士或國稅局確認個案。</div>
+</section>
+<section class="tool" id="tool-inherit" data-tool="inherit" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">繼承與遺產稅</span>
+    <h2>繼承分配計算機</h2>
+    <p>家人往生後，誰可以分、各分多少、最少保障多少、要繳多少遺產稅？填入家人狀況與遺產，一次看清楚；也可以先試算，作為立遺囑與規劃的參考。</p>
+  </header>
+<div class="panel" id="inf">
+  <h2>被繼承人與遺產</h2>
+  <div class="fields">
+    <div class="field"><label for="i_death">被繼承人死亡日<span class="hint">決定特留分適用新法或舊法</span></label><input id="i_death" type="date"></div>
+    <div class="field"><label for="i_total">遺產總額<span class="hint">房地產、存款、股票等合計，以稅法規定的價值估算</span></label><div class="unit-wrap"><input id="i_total" type="number" inputmode="decimal" min="0" step="100" value="5000"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="i_debt">被繼承人債務<span class="hint">房貸、借款、未繳稅等</span></label><div class="unit-wrap"><input id="i_debt" type="number" inputmode="decimal" min="0" step="10" value="0"><span class="unit">萬元</span></div></div>
+    <div class="field"><label for="i_gift">死亡前 2 年內的贈與<span class="hint">贈與配偶、子女、孫子女、兄弟姊妹等，須併入遺產稅計算</span></label><div class="unit-wrap"><input id="i_gift" type="number" inputmode="decimal" min="0" step="10" value="0"><span class="unit">萬元</span></div></div>
+  </div>
+  <h2 style="margin-top:20px;">家人狀況（還在世的人）</h2>
+  <div class="field"><label>有配偶嗎？</label>
+    <div class="seg"><label><input type="radio" name="i_sp" value="1" checked><span>有配偶</span></label><label><input type="radio" name="i_sp" value="0"><span>沒有配偶</span></label></div></div>
+  <div class="fields" style="margin-top:14px;">
+    <div class="field"><label for="i_kids">子女人數<span class="hint">已過世的子女由其子女代位時，算 1 份</span></label><div class="unit-wrap"><input id="i_kids" type="number" inputmode="numeric" min="0" max="20" step="1" value="2"><span class="unit">人</span></div></div>
+    <div class="field"><label for="i_minor">未成年子女距成年的年數合計<span class="hint">成年為 18 歲；例如 1 位 10 歲子女填 8，沒有就填 0</span></label><div class="unit-wrap"><input id="i_minor" type="number" inputmode="numeric" min="0" step="1" value="0"><span class="unit">年</span></div></div>
+    <div class="field"><label for="i_par">父母在世人數</label><select id="i_par"><option value="0">0 人</option><option value="1">1 人</option><option value="2">2 人</option></select></div>
+    <div class="field"><label for="i_sib">兄弟姊妹人數<span class="hint">同樣以「一份」為單位</span></label><div class="unit-wrap"><input id="i_sib" type="number" inputmode="numeric" min="0" max="20" step="1" value="0"><span class="unit">人</span></div></div>
+    <div class="field"><label for="i_gp">祖父母在世人數</label><select id="i_gp"><option value="0">0 人</option><option value="1">1 人</option><option value="2">2 人</option><option value="3">3 人</option><option value="4">4 人</option></select></div>
+    <div class="field"><label for="i_dis">重度以上身心障礙的繼承人<span class="hint">每人可多扣 693 萬</span></label><div class="unit-wrap"><input id="i_dis" type="number" inputmode="numeric" min="0" step="1" value="0"><span class="unit">人</span></div></div>
+    <div class="field"><label for="i_oth">受扶養的兄弟姊妹、祖父母<span class="hint">每人可扣 56 萬</span></label><div class="unit-wrap"><input id="i_oth" type="number" inputmode="numeric" min="0" step="1" value="0"><span class="unit">人</span></div></div>
+  </div>
+</div>
+<div id="ir"></div>
+  <div class="disclaimer">法規核對至 2026 年 10 月：遺產稅免稅額與扣除額為財政部公告之 115 年度數字（繼承發生於 2024 年起均相同，116 年起以財政部公告為準）；手足特留分刪除案 2026/7/28 三讀、2027/2/17 施行，以被繼承人死亡日為準。本工具未計入拋棄繼承、代位繼承細節、不適格、遺贈與生前贈與歸扣、配偶剩餘財產差額分配請求權、農業用地與保險等特殊扣除與計算，實際分配與稅額請洽律師、地政士或會計師。</div>
+</section>
+<section class="tool" id="tool-school" data-tool="school" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">115 學年度官方學區</span>
+    <h2>青埔學區查詢</h2>
+    <p>青埔橫跨中壢區與大園區，同一個里的不同鄰，學區可能不一樣。輸入里別與鄰別，直接查到對應的國小與國中；資料來自桃園市教育局公告的 115 學年度學區一覽表，不是舊的開放資料。</p>
+  </header>
+<div class="panel" id="scf">
+  <h2>用里別與鄰別查學區</h2>
+  <div class="fields">
+    <div class="field"><label for="s_dist">行政區</label><select id="s_dist"></select></div>
+    <div class="field"><label for="s_li">里別<span class="hint">看戶籍謄本、房屋稅單或水電帳單上的「○○里」</span></label><select id="s_li"></select></div>
+    <div class="field"><label for="s_lin">鄰別<span class="hint">選填；有些里的學區要看鄰別</span></label><div class="unit-wrap"><input id="s_lin" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="例如 12"><span class="unit">鄰</span></div></div>
+  </div>
+  <div style="margin-top:12px;"><span class="note"><strong>青埔周邊常查的里別：</strong></span> <span id="s_chips"></span></div>
+</div>
+<div id="scr"></div>
+<div class="panel" id="scf2">
+  <h2>反過來：看某所學校的學區</h2>
+  <div class="fields">
+    <div class="field"><label for="v_dist">行政區（一覽表）</label><select id="v_dist"></select></div>
+    <div class="field"><label for="v_lv">學制</label><select id="v_lv"><option value="小">國小</option><option value="中">國中</option></select></div>
+    <div class="field"><label for="v_sc">學校</label><select id="v_sc"></select></div>
+  </div>
+  <div id="vr" style="margin-top:14px;"></div>
+</div>
+  <div class="disclaimer">資料來源：桃園市政府教育局 115 學年度國民中小學學區一覽表（中壢區、大園區，2025/12/31 更新）。國小學區適用 108.09.02 至 109.09.01 出生的兒童，國中適用 102.09.02 至 103.09.01 出生的兒童，其他出生期間的學童、之後學年度的學區會調整，以教育局當年度公告為準。學區依「戶籍所在的里鄰」劃分，部分里鄰須依門牌核對；自由學區、跨區就讀與入學規定，請洽教育局（03-3322101）或學校。本工具整理公開資料，不構成入學保證。</div>
+</section>
+<section class="tool" id="tool-poi" data-tool="poi" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">生活機能（本機版・需連網）</span>
+    <h2>周邊機能地圖</h2>
+    <p>看房前先看生活圈。搜尋地址或在地圖上點一下，選半徑，馬上列出附近各類設施的數量與最近距離，並能一鍵複製成文字傳給客戶。</p>
+  </header>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  #map{height:min(60vh,440px);min-height:300px;border-radius:14px;border:1px solid var(--line);margin-bottom:14px;z-index:0;}
+  .cat-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+  .cat-grid label{display:flex;gap:8px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer;font-size:.9rem;min-height:44px;}
+  .cat-grid input{width:20px;height:20px;accent-color:var(--orange);flex:none;}
+  .cat-grid .dot{width:11px;height:11px;border-radius:50%;flex:none;}
+</style>
+<div class="panel" id="mpf">
+  <h2>查詢位置</h2>
+  <div class="fields">
+    <div class="field" style="grid-column:1/-1;"><label for="p_q">搜尋地址或地標</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;"><input id="p_q" type="text" placeholder="例如：桃園市中壢區高鐵北路一段" style="flex:1 1 220px;"><button type="button" class="btn btn-ghost" id="p_go">搜尋</button></div></div>
+    <div class="field"><label for="p_r">查詢半徑</label><select id="p_r"><option value="300">300 公尺</option><option value="500" selected>500 公尺</option><option value="800">800 公尺</option><option value="1000">1,000 公尺</option></select></div>
+  </div>
+  <div style="margin-top:10px;"><span class="note"><strong>常用定位：</strong></span> <button type="button" class="tt-tab" data-lat="25.0137" data-lon="121.2141" style="min-height:36px;padding:6px 12px;margin:2px 4px;">高鐵桃園站</button><button type="button" class="tt-tab" data-lat="25.00728" data-lon="121.21443" style="min-height:36px;padding:6px 12px;margin:2px 4px;">青埔國小</button> <span class="note">也可以直接在地圖上點一下，改成查那個位置。</span></div>
+  <div class="field" style="margin-top:14px;"><label>要查哪些設施</label><div class="cat-grid" id="p_cats"></div></div>
+  <div class="actions"><button type="button" class="btn btn-orange" id="p_run">查詢這個位置</button><span class="note" id="p_msg"></span></div>
+</div>
+<div id="map"></div>
+<div id="mpr"></div>
+  <div class="disclaimer">地圖與設施資料來自 OpenStreetMap 貢獻者，可能不完整或未即時更新（例如剛開幕或已歇業的店家）；距離為直線距離，不等於步行或行車時間。查詢需要網路，並使用 OpenStreetMap 的公開地圖與查詢服務，請勿短時間大量查詢。僅供看屋參考，實際環境請現場確認。</div>
+</section>
+<section class="tool" id="tool-check6" data-tool="check6" hidden>
+  <header class="tool-head">
+    <span class="eyebrow">買中古屋</span>
+    <h2>中古屋查核清單</h2>
+    <p>帶看之前（或出價之前）先把這 6 件事查完，能避開大多數買到雷的情況。逐項打勾，進度會自動存在你的手機或電腦，下次打開還在。</p>
+  </header>
+<div class="panel">
+  <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;"><strong id="chkTxt">已完成 0 / 0 項</strong><span class="note" id="chkHint">未查完前，不建議出價或簽約</span></div>
+  <div class="chk-progress"><i id="chkBar"></i></div>
+  <div class="actions" style="margin-top:12px;">
+    <button type="button" class="btn btn-ghost" id="chkReset">全部重置</button>
+    <button type="button" class="btn btn-ghost" id="chkPrint">列印／存成 PDF</button>
+  </div>
+</div>
+<div id="chk"></div>
+  <div class="disclaimer">本清單為一般性提醒，不構成法律或專業鑑定意見；各案情況不同，屋況與產權疑慮建議委託專業人員（地政士、建築師、結構技師等）協助確認，並要求賣方與仲介於不動產說明書與買賣契約中如實揭露。</div>
+</section>
+  </div>
+</main>
+<footer class="app-foot">
+  <div class="wrap">
+    <strong>青埔房仲小賈　周家篁</strong>
+    <div class="dim">有巢氏房屋青埔 A18 高鐵加盟店｜經紀業：賀成交不動產股份有限公司</div>
+    <div class="dim">賞屋專線 <a href="tel:0906848168" class="tel">0906-848-168</a>｜營業員證號：(109)登字第380553號</div>
+    <div class="dim">規則整理時間：2026 年 10 月。本工具為概算，實際以主管機關、金融機構及個案核定為準。</div>
+  </div>
+</footer>
+<script>
+/* 房產工具箱共用函式 */
+(function(){
+  var T = {
+    $: function(id){ return document.getElementById(id); },
+    num: function(id){ var el=document.getElementById(id); if(!el) return 0; var v=parseFloat(String(el.value).replace(/,/g,'')); return isFinite(v)?v:0; },
+    val: function(id){ var el=document.getElementById(id); return el?el.value:''; },
+    radio: function(name){ var el=document.querySelector('input[name="'+name+'"]:checked'); return el?el.value:''; },
+    nt: function(n){ n=Math.round(n); return (n<0?'-':'')+'NT$ '+Math.abs(n).toLocaleString('en-US'); },
+    wan: function(yuan, d){ if(d===undefined) d=1; return (yuan/10000).toLocaleString('en-US',{maximumFractionDigits:d,minimumFractionDigits:0})+' 萬'; },
+    pct: function(n, d){ if(d===undefined) d=2; return n.toFixed(d).replace(/\.?0+$/,'')+'%'; },
+    html: function(id, s){ var el=document.getElementById(id); if(el) el.innerHTML=s; },
+    /* 本息平均攤還每期付款：P 本金、r 期利率（小數）、n 期數 */
+    pmt: function(P, r, n){ if(n<=0) return 0; if(r===0) return P/n; var k=Math.pow(1+r,n); return P*r*k/(k-1); },
+    /* 房貸逐月模擬。rateAt(月序號 t) 回傳年利率(%)；graceM 寬限月數；method: equal|principal */
+    schedule: function(P, n, graceM, rateAt, method){
+      var bal=P, rows=[], total=0, interestTotal=0, curPay=0, curRate=null, first=null, firstAfter=null, lastPay=0;
+      var yr={};
+      for(var t=1;t<=n;t++){
+        var ar=rateAt(t), r=ar/1200, interest=bal*r, princ, pay;
+        if(t<=graceM){ princ=0; pay=interest; }
+        else if(method==='principal'){ princ=P/(n-graceM); pay=princ+interest; }
+        else{
+          if(curRate!==ar || (t-1)%12===0 || t===graceM+1){ curPay=T.pmt(bal,r,n-t+1); curRate=ar; }
+          princ=curPay-interest; pay=curPay;
+        }
+        bal-=princ; if(bal<0.5) bal=0;
+        total+=pay; interestTotal+=interest; lastPay=pay;
+        if(first===null) first=pay;
+        if(t===graceM+1) firstAfter=pay;
+        var y=Math.ceil(t/12);
+        if(!yr[y]) yr[y]={y:y,pay:0,princ:0,interest:0,months:0,rate:ar,firstPay:pay,endBal:0};
+        yr[y].pay+=pay; yr[y].princ+=princ; yr[y].interest+=interest; yr[y].months++; yr[y].endBal=bal;
+      }
+      var list=[]; for(var k in yr) list.push(yr[k]);
+      return {years:list, total:total, interest:interestTotal, first:first, firstAfter:(firstAfter===null?first:firstAfter), last:lastPay};
+    },
+    /* 分頁 */
+    tabs: function(root){
+      var btns=root.querySelectorAll('.tt-tab'), panes=root.querySelectorAll('.tt-pane');
+      function show(i){
+        btns.forEach(function(b,j){ b.setAttribute('aria-selected', j===i?'true':'false'); });
+        panes.forEach(function(p,j){ p.hidden = (j!==i); });
+      }
+      btns.forEach(function(b,i){ b.addEventListener('click', function(){ show(i); }); });
+      show(0);
+    },
+    /* 輸入變動即時重算 */
+    bind: function(scope, fn){
+      var els=scope.querySelectorAll('input,select');
+      els.forEach(function(e){ e.addEventListener('input', fn); e.addEventListener('change', fn); });
+      fn();
+    },
+    /* 日期加 N 年（含閏年處理） */
+    addYears: function(d, n){ var x=new Date(d.getTime()); x.setFullYear(x.getFullYear()+n); return x; },
+    /* 持有期間分級：回傳 0:≤2年 1:2-5年 2:5-10年 3:>10年；超過才進下一級 */
+    holdTier: function(acq, sold){
+      if(sold>T.addYears(acq,10)) return 3;
+      if(sold>T.addYears(acq,5)) return 2;
+      if(sold>T.addYears(acq,2)) return 1;
+      return 0;
+    },
+    years: function(acq, sold){ return (sold-acq)/(365.25*86400000); }
+  };
+  window.T = T;
+})();
+
+</script>
+<script>
+(function(){
+  T.tabs(document.getElementById('calcApp'));
+
+  function kpi(k, v, cls){ return '<div class="kpi'+(cls?' '+cls:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+
+  /* ① 房貸 */
+  function calc1(){
+    var P = T.num('loan')*10000, rate = T.num('rate'), years = Math.max(1, Math.round(T.num('years'))), g = parseInt(T.val('grace'),10)||0;
+    var method = T.radio('m1')||'equal';
+    if(P<=0){ T.html('r1','<div class="note">請輸入貸款金額。</div>'); return; }
+    if(g>=years){ T.html('r1','<div class="result"><div class="lead">設定有誤</div><div class="sub">寬限期必須短於貸款年限。</div></div>'); return; }
+    var n = years*12, gm = g*12;
+    var s = T.schedule(P, n, gm, function(){ return rate; }, method);
+    var lead, big, sub;
+    if(method==='equal'){
+      lead = g>0 ? '寬限期結束後，每月應繳' : '每月應繳';
+      big = T.nt(s.firstAfter);
+      sub = g>0 ? '寬限期內（前 '+g+' 年）每月只繳利息 '+T.nt(s.first)+'。' : '本息平均攤還，每月金額固定。';
+    } else {
+      lead = g>0 ? '寬限期結束後，首月應繳' : '首月應繳';
+      big = T.nt(s.firstAfter);
+      sub = '本金平均攤還：每月本金固定，利息逐月減少，最後一個月約繳 '+T.nt(s.last)+'。'+(g>0?' 寬限期內每月只繳利息 '+T.nt(s.first)+'。':'');
+    }
+    var rows = s.years.map(function(y){
+      var avg = y.pay/y.months;
+      return '<tr><td>第 '+y.y+' 年</td><td>'+Math.round(avg).toLocaleString('en-US')+'</td><td>'+Math.round(y.princ).toLocaleString('en-US')+'</td><td>'+Math.round(y.interest).toLocaleString('en-US')+'</td><td>'+Math.round(y.endBal).toLocaleString('en-US')+'</td></tr>';
+    }).join('');
+    T.html('r1',
+      '<div class="result"><div class="lead">'+lead+'</div><div class="big">'+big+'</div><div class="sub">'+sub+'</div>'+
+      '<div class="kpis">'+kpi('總利息', T.nt(s.interest))+kpi('總還款金額', T.nt(s.total))+kpi('利息占貸款比例', T.pct(s.interest/P*100,1), 'warn')+kpi('貸款總期數', n+' 期')+'</div></div>'+
+      '<div class="panel"><h3>逐年還款概況</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>年度</th><th>平均月付</th><th>本年還本金</th><th>本年繳利息</th><th>年底餘額</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="note" style="margin:10px 0 0;">單位：元。以固定利率逐月模擬，實際以銀行對帳單為準。</p></div>');
+  }
+  T.bind(document.getElementById('f1'), calc1);
+
+  /* ② 買房現金準備 */
+  function calc2(){
+    var price=T.num('b_price')*10000, ltv=T.num('b_ltv')/100, rv=T.num('b_rv')*10000, landV=T.num('b_land')*10000, regV=T.num('b_reg')*10000;
+    var loan = price*ltv, down = price-loan;
+    var deedTax = rv*0.06, stamp = (landV+rv)*0.001, regfee = (regV+rv)*0.001, mort = loan*1.2*0.001;
+    var deed = T.num('b_deed')*10000, bank = T.num('b_bank')*10000, agent = price*T.num('b_agent')/100, ins = T.num('b_ins')*10000, other = T.num('b_other')*10000;
+    var fees = deedTax+stamp+regfee+mort+deed+bank+agent+ins+other;
+    var total = down+fees;
+    if(price<=0){ T.html('r2','<div class="note">請輸入成交總價。</div>'); return; }
+    var items = [
+      ['自備款（成交價 − 貸款）', down, ''],
+      ['契稅（評定現值 × 6%）', deedTax, ''],
+      ['印花稅（（土地公告現值＋房屋評定現值）× 0.1%）', stamp, ''],
+      ['土地建物移轉登記規費（（申報地價＋評定現值）× 0.1%）', regfee, ''],
+      ['抵押權設定登記費（貸款 × 120% × 0.1%）', mort, ''],
+      ['代書費', deed, ''],
+      ['銀行開辦／徵信費', bank, ''],
+      ['買方服務費', agent, ''],
+      ['火災＋地震險（首年）', ins, ''],
+      ['裝潢、搬家、家電', other, '']
+    ];
+    var rows = items.map(function(it){ return '<tr><td>'+it[0]+'</td><td>'+Math.round(it[1]).toLocaleString('en-US')+'</td></tr>'; }).join('');
+    rows += '<tr class="hl"><td>總共需要準備的現金</td><td>'+Math.round(total).toLocaleString('en-US')+'</td></tr>';
+    T.html('r2',
+      '<div class="result"><div class="lead">手上至少要準備的現金</div><div class="big">'+T.nt(total)+'</div><div class="sub">約 '+T.wan(total)+'，其中自備款 '+T.wan(down)+'，稅費與雜支 '+T.wan(fees)+'。</div>'+
+      '<div class="kpis">'+kpi('貸款金額', T.nt(loan))+kpi('自備款', T.nt(down))+kpi('稅費＋雜支', T.nt(fees), 'warn')+kpi('雜支占成交價', T.pct(fees/price*100,2))+'</div></div>'+
+      '<div class="panel"><h3>費用明細</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>項目</th><th>金額（元）</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="note" style="margin:10px 0 0;">土地增值稅、房地合一稅屬於賣方稅負，不在此計算；預售屋與新成屋的稅費項目略有不同，請洽我們核對。</p></div>');
+  }
+  T.$('b_who').addEventListener('change', function(){ T.$('b_ltv').value=T.val('b_who'); calc2(); });
+  T.bind(document.getElementById('f2'), calc2);
+
+  /* ③ 持有成本 */
+  function calc3(){
+    var typ = T.val('h_type');
+    T.$('h_rate_wrap').hidden = (typ!=='custom');
+    var rate = typ==='custom' ? T.num('h_rate') : parseFloat(typ);
+    var rv=T.num('h_rv')*10000, tax = rv*rate/100, land=T.num('h_land');
+    var mg=T.num('h_mgmt')*12, pk=T.num('h_park')*12, ins=T.num('h_ins'), fix=T.num('h_fix');
+    var intr = T.num('h_loan')*10000*T.num('h_irate')/100;
+    var total = tax+land+mg+pk+ins+fix+intr;
+    var items=[['房屋稅（評定現值 × '+T.pct(rate,2)+'）',tax],['地價稅',land],['管理費',mg],['車位管理費',pk],['火災＋地震險',ins],['維修預備金',fix],['房貸利息（首年約略，不含本金）',intr]];
+    var rows=items.map(function(it){ return '<tr><td>'+it[0]+'</td><td>'+Math.round(it[1]).toLocaleString('en-US')+'</td></tr>'; }).join('');
+    rows+='<tr class="hl"><td>每年持有成本合計</td><td>'+Math.round(total).toLocaleString('en-US')+'</td></tr>';
+    T.html('r3',
+      '<div class="result"><div class="lead">平均每月持有成本（不含還本金）</div><div class="big">'+T.nt(total/12)+'</div><div class="sub">每年合計 '+T.nt(total)+'。房貸「還本金」部分是把錢存進房子，沒有算在內。</div>'+
+      '<div class="kpis">'+kpi('房屋稅（年）', T.nt(tax))+kpi('房貸利息（年）', T.nt(intr), 'warn')+kpi('管理費（年）', T.nt(mg+pk))+kpi('維修＋保險（年）', T.nt(fix+ins))+'</div></div>'+
+      '<div class="panel"><h3>每年費用明細</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>項目</th><th>金額（元）</th></tr></thead><tbody>'+rows+'</tbody></table></div><p class="note" style="margin:10px 0 0;">自住稅率需設籍並實際居住；非自住（含出租、空置）依各縣市公告稅率，2026 年起全國歸戶計算戶數。</p></div>');
+  }
+  T.bind(document.getElementById('f3'), calc3);
+})();
+</script>
+<script>
+(function(){
+  function rateAt(t){ var y=Math.ceil(t/12); return y<=3?1.775 : y===4?1.9 : y===5?2.025 : y===6?2.15 : 2.275; }
+  function pill(t, c){ return '<span class="pill '+c+'">'+t+'</span>'; }
+  function row(p, text){ return '<div class="verdict">'+p+'<div>'+text+'</div></div>'; }
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+
+  function calc(){
+    var age=T.num('q_age'), inc=T.num('q_inc'), cap=parseFloat(T.val('q_city')), price=T.num('q_price');
+    var fam=T.radio('q_fam'), nh=T.radio('q_nh')==='1', used=T.radio('q_used')==='1';
+    var maxTerm=Math.max(0, Math.min(40, 80-Math.ceil(age)));
+    T.$('q_term_hint').textContent='你的年齡最長可貸 '+maxTerm+' 年（年齡＋年限不超過 80）';
+    var term=Math.max(1, Math.round(T.num('q_term')));
+    var grace=parseInt(T.val('q_grace'),10)||0;
+    var quota = fam==='kid'?1500 : fam==='wed'?1200 : 1000;
+
+    var checks=[], bad=0;
+    function add(ok, okTxt, noTxt){ checks.push(row(ok?pill('符合','ok'):pill('不符','no'), ok?okTxt:noTxt)); if(!ok) bad++; }
+    add(age<50, '申貸年齡 '+age+' 歲，符合「未滿 50 歲」。', '申貸年齡 '+age+' 歲，青安 3.0 要求未滿 50 歲。');
+    add(inc<=200, '本人年所得 '+inc+' 萬，在 200 萬以內。', '本人年所得 '+inc+' 萬，超過 200 萬的上限。');
+    add(nh, '本人、配偶、未成年子女名下無自有住宅。', '名下已有住宅，青安屬首購優惠，一般不符合。');
+    add(!used, '尚未使用過青安，可申請（限貸一次）。', '已使用過青安貸款，限貸一次，不能再申請。');
+    add(price<=cap, '房價 '+price+' 萬，在該縣市上限 '+cap.toLocaleString('en-US')+' 萬以內。', '房價 '+price+' 萬，超過該縣市上限 '+cap.toLocaleString('en-US')+' 萬。');
+    add(term<=maxTerm && term<=40, '貸款 '+term+' 年，年齡加年限 '+(Math.ceil(age)+term)+'，未超過 80。', '貸款 '+term+' 年超過可貸年限（最長 '+maxTerm+' 年）。');
+    add(grace<term, '寬限期 '+grace+' 年，短於貸款年限。', '寬限期必須短於貸款年限。');
+
+    var loanByLtv=price*0.8, loan=Math.min(loanByLtv, quota);
+    var limited = loanByLtv>quota;
+    var ok = bad===0;
+    var verdictBox = '<div class="result"><div class="lead">'+(ok?'初步檢測結果':'初步檢測結果（有項目不符）')+'</div>'+
+      '<div class="big" style="font-size:clamp(1.4rem,5.5vw,2rem);font-family:inherit;font-weight:900;">'+(ok?'符合青安 3.0 資格':'目前有 '+bad+' 項不符')+'</div>'+
+      '<div class="sub">'+(ok?'以下是以你的條件試算的額度與月付金。':'下方仍列出「若其他條件調整後」的試算，供評估方向。')+'</div>'+
+      '<div style="margin-top:12px;">'+checks.join('')+'</div></div>';
+
+    var loanYuan=loan*10000, n=term*12, gm=Math.min(grace,term-1)*12;
+    var s=T.schedule(loanYuan, n, gm, rateAt, 'equal');
+    var y1=s.years[0], y7=s.years[Math.min(6,s.years.length-1)];
+    var rows=s.years.slice(0,8).map(function(y){
+      var inGrace = (y.y*12)<=gm;
+      return '<tr><td>第 '+y.y+' 年'+(inGrace?'（寬限）':'')+'</td><td>'+y.rate+'%</td><td>'+Math.round(y.firstPay).toLocaleString('en-US')+'</td><td>'+Math.round(y.princ).toLocaleString('en-US')+'</td><td>'+Math.round(y.interest).toLocaleString('en-US')+'</td></tr>';
+    }).join('');
+    var loanBox = '<div class="result"><div class="lead">可貸金額（成數 8 成與額度上限取低）</div><div class="big">'+T.nt(loanYuan)+'</div>'+
+      '<div class="sub">'+(limited?'受額度上限 '+quota.toLocaleString('en-US')+' 萬限制，':'依房價 8 成，')+'自備款約 '+T.wan((price-loan)*10000)+'（不含稅費）。</div>'+
+      '<div class="kpis">'+kpi('第 1 年每月', T.nt(y1.firstPay))+kpi('第 7 年起每月', T.nt(y7.firstPay), 'warn')+kpi('全期總利息', T.nt(s.interest))+kpi('自備款', T.nt((price-loan)*10000))+'</div></div>'+
+      '<div class="panel"><h3>前 8 年每月付款變化</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>年度</th><th>利率</th><th>每月付款（元）</th><th>本年還本金</th><th>本年繳利息</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+      '<p class="note" style="margin:10px 0 0;">'+(gm>0?'寬限期內每月只繳利息；寬限期結束後月付會明顯跳升，建議提前用<a href="#grace" data-go="grace" style="color:var(--orange);font-weight:700;">寬限期到期試算器</a>評估。':'每年依當年利率重新計算月付。')+' 第 7 年起以基準利率 2.275% 假設。</p></div>';
+    T.html('qr', verdictBox + loanBox);
+  }
+  T.bind(document.getElementById('qf'), calc);
+})();
+</script>
+<script>
+(function(){
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  function f(n){ return Math.round(n).toLocaleString('en-US'); }
+  function calc(){
+    var P=T.num('g_loan')*10000, rate=T.num('g_rate'), total=Math.round(T.num('g_total')), g=Math.round(T.num('g_grace'));
+    if(P<=0){ T.html('gr','<div class="note">請輸入貸款金額。</div>'); return; }
+    if(g>=total){ T.html('gr','<div class="result"><div class="lead">設定有誤</div><div class="sub">寬限期必須短於貸款總年限。</div></div>'); return; }
+    var r=rate/1200, m=(total-g)*12;
+    var payGrace=P*r, payA=T.pmt(P,r,m), jump=payA-payGrace, ratio=payGrace>0?jump/payGrace*100:0;
+    var intA=payA*m-P;
+    var ext=Math.round(T.num('g_ext')); var m2=(ext-g)*12;
+    var payB=ext>total? T.pmt(P,r,m2) : payA, intB=ext>total? payB*m2-P : intA;
+    var pre=Math.min(T.num('g_pre')*10000, P); var P3=P-pre;
+    var payC=T.pmt(P3,r,m), intC=payC*m-P3;
+    var r2=T.num('g_rate2')/1200, fee=T.num('g_fee')*10000;
+    var payD=T.pmt(P,r2,m), intD=payD*m-P, saveD=payA-payD;
+    var be = saveD>0 ? Math.ceil(fee/saveD) : null;
+
+    function cmp(p){ var d=p-payA; return d===0?'—':(d<0?'少 ':'多 ')+f(Math.abs(d)); }
+    var rows =
+      '<tr><td>路線一：照常本息攤還</td><td>'+f(payA)+'</td><td>—</td><td>'+f(intA)+'</td></tr>'+
+      '<tr><td>路線二：延長至 '+ext+' 年</td><td>'+f(payB)+'</td><td>'+cmp(payB)+'</td><td>'+f(intB)+'</td></tr>'+
+      '<tr><td>路線三：先還 '+T.wan(pre,0)+'</td><td>'+f(payC)+'</td><td>'+cmp(payC)+'</td><td>'+f(intC)+'</td></tr>'+
+      '<tr><td>路線四：轉貸 '+T.pct(T.num('g_rate2'),3)+'</td><td>'+f(payD)+'</td><td>'+cmp(payD)+'</td><td>'+f(intD+fee)+'</td></tr>';
+    var notes=[];
+    if(ext<=total) notes.push('路線二：延長年限需大於目前總年限 '+total+' 年才有差異。');
+    if(be!==null) notes.push('路線四：轉貸每月省 '+T.nt(saveD)+'，要約 '+be+' 個月（'+(be/12).toFixed(1)+' 年）才能把轉貸費用 '+T.wan(fee,1)+' 賺回來。');
+    else notes.push('路線四：以這個利率轉貸，月付沒有比現在低，不划算。');
+    T.html('gr',
+      '<div class="result"><div class="lead">寬限期到期後，每月付款會從</div>'+
+      '<div class="big">'+T.nt(payGrace)+' → '+T.nt(payA)+'</div>'+
+      '<div class="sub">每月多繳 '+T.nt(jump)+'，增加約 '+T.pct(ratio,0)+'。到期後剩 '+(total-g)+' 年（'+m+' 期）攤還 '+T.wan(P,0)+' 本金。</div>'+
+      '<div class="kpis">'+kpi('寬限期內每月', T.nt(payGrace))+kpi('到期後每月', T.nt(payA), 'warn')+kpi('每月多繳', T.nt(jump), 'warn')+kpi('寬限期內已繳利息', T.nt(payGrace*g*12))+'</div></div>'+
+      '<div class="panel"><h3>四條路一次比（到期後）</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>路線</th><th>每月付款（元）</th><th>與路線一差</th><th>到期後總利息（元）</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+      '<p class="note" style="margin:10px 0 0;">'+notes.join('<br>')+'<br>路線四的總利息已含轉貸費用。延長年限雖然月付較低，但總利息通常較高。</p></div>');
+  }
+  T.bind(document.getElementById('gf'), calc);
+})();
+</script>
+<script>
+(function(){
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  function f(n){ return Math.round(n).toLocaleString('en-US'); }
+
+  /* ---- 步驟一：三條路決策 ---- */
+  function route(){
+    var P=T.num('r_loan')*10000, rate=T.num('r_rate'), left=Math.max(1,Math.round(T.num('r_left'))), inc=T.num('r_income');
+    var maxY=Math.max(left,Math.round(T.num('r_max'))), cash=T.num('r_cash')*10000, rate2=T.num('r_rate2');
+    if(P<=0){ T.html('rr','<div class="note">請輸入貸款餘額。</div>'); return; }
+    var r=rate/1200, r2=rate2/1200, m=left*12;
+    var payNow=P*r, payA=T.pmt(P,r,m);
+    var okA = payA<=inc;
+    // 路線二：延長年限
+    var needY=null;
+    for(var y=left;y<=maxY;y++){ if(T.pmt(P,r,y*12)<=inc){ needY=y; break; } }
+    var payB=T.pmt(P,r,maxY*12);
+    // 路線三：先還本金
+    var factor=T.pmt(1,r,m);               // 每 1 元本金的月付
+    var P2=inc/factor, need=Math.max(0,P-P2);
+    var okC = need<=cash;
+    // 路線四：轉貸
+    var payD=T.pmt(P,r2,m), saveD=payA-payD;
+    var okD = payD<=inc;
+
+    function node(cls, t, d){ return '<div class="verdict"><span class="pill '+cls+'">'+t+'</span><div>'+d+'</div></div>'; }
+    var head = okA
+      ? '到期後每月 <strong>'+T.nt(payA)+'</strong>，在你的負擔範圍內（上限 '+T.nt(inc)+'）。照繳可行，不過仍建議比價看看能不能更省。'
+      : '到期後每月會從 '+T.nt(payNow)+' 跳到 <strong>'+T.nt(payA)+'</strong>，比你的負擔上限 '+T.nt(inc)+' 高出 <strong>'+T.nt(payA-inc)+'</strong>，需要處理。';
+    var lines = [];
+    lines.push(node(okA?'ok':'no','路線一　照繳', okA?'月付 '+T.nt(payA)+'，不用做任何調整，但要確認到期後現金流仍有緩衝。':'月付 '+T.nt(payA)+'，超出負擔上限，直接照繳會吃緊。'));
+    if(okA){ lines.push(node('maybe','路線二　延長年限','非必要。延長年限月付降到 '+T.nt(payB)+'（'+maxY+' 年），但總利息會增加。')); }
+    else if(needY!==null){ lines.push(node('ok','路線二　延長年限','延長到剩餘 <strong>'+needY+' 年</strong>，月付約 '+T.nt(T.pmt(P,r,needY*12))+'，就能降到負擔上限內。需銀行同意，總利息會增加。')); }
+    else { lines.push(node('no','路線二　延長年限','即使延到 '+maxY+' 年，月付仍要 '+T.nt(payB)+'，單靠延長年限不夠。')); }
+    if(okA){ lines.push(node('maybe','路線三　先還本金','非必要。若有閒置現金，先還本金可以減少總利息。')); }
+    else { lines.push(node(okC?'ok':'no','路線三　先還本金', okC?'先還約 <strong>'+T.wan(need)+'</strong>（你有 '+T.wan(cash)+'），月付就能降到負擔上限內。先確認有沒有提前清償違約金。':'要降到負擔上限內，需要先還約 '+T.wan(need)+'，你的現金 '+T.wan(cash)+' 不夠，可搭配路線二。')); }
+    lines.push(node(saveD>0?(okD?'ok':'maybe'):'no','路線四　轉貸', saveD>0?'利率 '+T.pct(rate2,3)+' 的話，月付 '+T.nt(payD)+'，每月省 '+T.nt(saveD)+(okD?'，已在負擔範圍內。':'，但仍高於負擔上限。')+' 要扣掉轉貸費用，見步驟三。':'他行利率沒有比現在低，轉貸不划算。'));
+
+    // 建議順序
+    var advice;
+    if(okA) advice='你的現金流撐得住，重點放在<strong>比價與降息</strong>：先去問原銀行能不能調降利率，再用步驟三評估轉貸。';
+    else if(okC) advice='<strong>先還本金（路線三）</strong>最直接，因為能同時降月付與總利息；若不想動用現金，再看延長年限。';
+    else if(needY!==null) advice='<strong>延長年限（路線二）</strong>可以把月付壓到負擔範圍內；有閒置資金再分批還本金，把年限縮回來。';
+    else advice='單一路線都不夠，需要<strong>組合</strong>：先延長年限，再用現金還本，並同步比價轉貸。建議儘早找銀行談，也可以來找我一起算。';
+
+    // 決策圖（純文字流程）
+    var flow='<div class="panel" style="margin:0 0 0;"><h3>決策圖</h3><ol class="note" style="padding-left:1.3em;margin:0;line-height:2;">'+
+      '<li>到期後月付 '+(okA?'<strong>負擔得起</strong>':'<strong>負擔不起</strong>')+'？'+
+        '<ul style="margin:0;padding-left:1.2em;">'+
+        '<li>負擔得起 → 路線一照繳，順便比價。</li>'+
+        '<li>負擔不起 → 手上現金夠不夠先還本金？'+
+          '<ul style="margin:0;padding-left:1.2em;"><li>夠 → 路線三先還本金。</li><li>不夠 → 銀行能不能延長年限？<ul style="margin:0;padding-left:1.2em;"><li>能 → 路線二；還不夠就兩條路組合。</li><li>不能 → 路線四轉貸，或找他行重新評估。</li></ul></li></ul></li>'+
+        '</ul></li></ol></div>';
+
+    T.html('rr',
+      '<div class="result"><div class="lead">到期後的狀況</div><div class="big" style="font-size:clamp(1.2rem,4.8vw,1.7rem);font-family:inherit;font-weight:900;">'+(okA?'負擔得起':'月付會超出負擔')+'</div><div class="sub">'+head+'</div>'+
+      '<div class="kpis">'+kpi('寬限期內每月',T.nt(payNow))+kpi('到期後每月',T.nt(payA),okA?'':'warn')+kpi('你的負擔上限',T.nt(inc))+kpi('缺口',okA?'無':T.nt(payA-inc),okA?'good':'warn')+'</div>'+
+      '<div style="margin-top:12px;">'+lines.join('')+'</div></div>'+
+      '<div class="panel"><h3>建議</h3><p class="note" style="margin:0;">'+advice+'</p></div>'+flow);
+    compute3(payA, P, m);
+  }
+
+  /* ---- 步驟二：話術 ---- */
+  var SCRIPTS=[
+    ['① 先問清楚：到期後會怎樣','您好，我想了解我的房貸（貸款帳號末四碼 ____）。寬限期預計 ____ 年 ____ 月到期，到期後每月應繳金額會是多少？另外想請問，到期前可以怎麼處理：是否可以申請延長貸款年限、再延長寬限期，或部分提前還款？各自需要準備哪些文件、審核大概多久？'],
+    ['② 談延長年限或調整還款方式','我目前每月可穩定負擔房貸約 ____ 元，寬限期結束後月付會增加到 ____ 元，負擔偏重。想請問行內有沒有可以降低月付的方案，例如延長貸款年限，或調整還款方式？需要提供哪些財力證明？審核結果大概多久會通知我？'],
+    ['③ 拿他行條件談利率','我目前貸款利率是 ____%，也在比較其他銀行的轉貸方案。想請問行內目前同條件的房貸利率與各項費用（開辦費、鑑價費、設定費）是多少？如果我提供他行的核貸條件，行內有沒有可以調整利率或減免費用的空間？麻煩提供書面報價。'],
+    ['④ 問清楚提前還款','我想了解部分提前還款：最低可還金額是多少？是否收提前清償違約金？依合約是在哪個期間內收、怎麼計算？還款後是縮短年限，還是降低每月付款，我可以選擇嗎？麻煩把相關條款也一併提供給我。']
+  ];
+  var sc='';
+  SCRIPTS.forEach(function(s,i){
+    sc+='<details class="chk-item"><summary><span class="no">'+(i+1)+'</span>'+s[0]+'</summary><div class="chk-body"><p class="why" id="sc'+i+'" style="color:var(--ink);font-size:.95rem;">'+s[1]+'</p><div class="actions" style="margin-top:6px;"><button type="button" class="btn btn-ghost cp" data-i="'+i+'">複製這段話術</button><span class="note" id="cpmsg'+i+'"></span></div></div></details>';
+  });
+  T.html('scripts', sc);
+  document.getElementById('scripts').addEventListener('click', function(e){
+    var b=e.target.closest ? e.target.closest('.cp') : null; if(!b) return;
+    var i=b.getAttribute('data-i'), txt=SCRIPTS[i][1], msg=T.$('cpmsg'+i);
+    function done(ok){ msg.textContent = ok ? '已複製' : '請長按文字自行複製'; if(!ok){ try{ var r=document.createRange(); r.selectNodeContents(T.$('sc'+i)); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }catch(e){} } setTimeout(function(){ msg.textContent=''; },2500); }
+    try{ navigator.clipboard.writeText(txt).then(function(){ done(true); }, function(){ done(false); }); }catch(err){ done(false); }
+  });
+
+  /* ---- 步驟三：轉貸費用 ---- */
+  var lastPay=0, lastP=0, lastM=0;
+  function compute3(payA, P, m){ if(payA!==undefined){ lastPay=payA; lastP=P; lastM=m; } render3(); }
+  function render3(){
+    var P=lastP, m=lastM, payA=lastPay; if(!P){ return; }
+    var r2=T.num('r_rate2')/1200, payD=T.pmt(P,r2,m), save=payA-payD;
+    var setFee=P*T.num('c_mult')*0.001;
+    var items=[['原銀行提前清償違約金',T.num('c_old')*10000],['新銀行開辦／手續費',T.num('c_open')*10000],['鑑價費',T.num('c_val')*10000],['地政士（代書）費',T.num('c_clerk')*10000],['新抵押權設定登記費（設定金額 × 0.1%）',setFee],['其他（塗銷、規費、保險等）',T.num('c_other')*10000]];
+    var total=0, rows=''; items.forEach(function(it){ total+=it[1]; rows+='<tr><td>'+it[0]+'</td><td>'+f(it[1])+'</td></tr>'; });
+    rows+='<tr class="hl"><td>轉貸費用合計</td><td>'+f(total)+'</td></tr>';
+    var be = save>0 ? Math.ceil(total/save) : null;
+    var verdict = save<=0 ? '以這個利率轉貸，月付沒有比現在低，不划算。' : '每月省 '+T.nt(save)+'，約 <strong>'+be+' 個月（'+(be/12).toFixed(1)+' 年）</strong>回本。'+(be>36?'回本超過 3 年，要評估你還會持有這筆貸款多久。':'回本在 3 年內，通常值得認真比價。');
+    T.html('cr','<div class="tbl-wrap"><table class="tbl"><thead><tr><th>項目</th><th>金額（元）</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+      '<div class="result" style="margin:14px 0 0;"><div class="lead">轉貸回本試算</div><div class="big" style="font-size:clamp(1.2rem,4.8vw,1.7rem);font-family:inherit;font-weight:900;">'+(be!==null?be+' 個月回本':'不划算')+'</div><div class="sub">'+verdict+'</div></div>');
+  }
+  T.bind(document.getElementById('rf'), route);
+  document.getElementById('cf').addEventListener('input', render3);
+  document.getElementById('cf').addEventListener('change', render3);
+})();
+</script>
+<script>
+(function(){
+  var RATES={p:[45,35,20,15], c:[45,35,20,20]};
+  var TIER=['持有 2 年以內','持有超過 2 年、未逾 5 年','持有超過 5 年、未逾 10 年','持有超過 10 年'];
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  var today=new Date(); var iso=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  T.$('t_sold').value=iso;
+
+  function calc(){
+    var who=T.radio('t_who'), isP=who==='p';
+    T.$('t_pers').hidden=!isP;
+    var re = isP && T.radio('t_re')==='1';
+    T.$('t_re_wrap').hidden=!re;
+    var acq=new Date(T.val('t_acq')), sold=new Date(T.val('t_sold'));
+    if(isNaN(acq)||isNaN(sold)){ T.html('tr','<div class="note">請輸入取得日與出售日。</div>'); return; }
+    if(sold<=acq){ T.html('tr','<div class="result"><div class="lead">日期有誤</div><div class="sub">出售日必須晚於取得日。</div></div>'); return; }
+    var sale=T.num('t_sale')*10000, cost=T.num('t_cost')*10000, cfee=T.num('t_cfee')*10000, sfee=T.num('t_sfee')*10000, land=T.num('t_land')*10000;
+    if(T.radio('t_nofee')==='1') sfee=Math.min(sale*0.03, 300000);
+    var tier=T.holdTier(acq,sold), yrs=T.years(acq,sold), rate=RATES[who][tier];
+    var gain=sale-cost-cfee-sfee-land;
+    var taxable=Math.max(gain,0);
+    var warn=[];
+    var self=isP && T.radio('t_self')==='1';
+    if(self && yrs<=6){ warn.push('持有期間未超過 6 年，通常不符自住優惠的「連續滿 6 年」條件，下方仍照你選的方式試算，請再確認。'); }
+    var normalTax=taxable*rate/100;
+    var tax, rateTxt, exemptTxt='';
+    if(self){ tax=Math.max(0,gain-4000000)*0.10; rateTxt='10%（超過 400 萬部分）'; exemptTxt=' 自住優惠免稅額 400 萬。'; }
+    else { tax=normalTax; rateTxt=rate+'%'; }
+    var refund=0, ratio=0;
+    if(re){ ratio=sale>0?Math.min(1,T.num('t_reprice')*10000/sale):0; refund=tax*ratio; }
+    var net=tax-refund;
+    if(self && re){ warn.push('自住優惠（400 萬免稅額）與重購退稅能否同時適用，財政部公告沒有說明，請向國稅局確認；下方先把兩者都計入。'); }
+    var holdTxt=Math.floor(yrs)+' 年 '+Math.round((yrs-Math.floor(yrs))*12)+' 個月';
+    var lead = re ? '重購退稅後，實際負擔約' : '預估應繳房地合一稅';
+    var sub = gain<=0 ? '出售為虧損或持平，本次不用繳房地合一稅（虧損可在 10 年內扣抵其他房地合一所得）。' :
+      (re ? '原應繳 '+T.nt(tax)+'，重購價額占出售價額 '+T.pct(ratio*100,1)+'，可退約 '+T.nt(refund)+'。' : (self ? '已套用自住優惠。'+exemptTxt : '依「'+TIER[tier]+'」適用 '+rate+'% 稅率。'));
+    var cmpRow='';
+    if(self && gain>0){ cmpRow='<tr><td>若不用自住優惠（'+rate+'%）</td><td>'+Math.round(normalTax).toLocaleString('en-US')+'</td></tr>'; }
+    var rows=
+      '<tr><td>出售價格</td><td>'+Math.round(sale).toLocaleString('en-US')+'</td></tr>'+
+      '<tr><td>− 取得價格</td><td>'+Math.round(cost).toLocaleString('en-US')+'</td></tr>'+
+      '<tr><td>− 取得時相關費用</td><td>'+Math.round(cfee).toLocaleString('en-US')+'</td></tr>'+
+      '<tr><td>− 出售時相關費用'+(T.radio('t_nofee')==='1'?'（按 3% 估算）':'')+'</td><td>'+Math.round(sfee).toLocaleString('en-US')+'</td></tr>'+
+      '<tr><td>− 土地漲價總數額</td><td>'+Math.round(land).toLocaleString('en-US')+'</td></tr>'+
+      '<tr class="hl"><td>課稅所得</td><td>'+Math.round(gain).toLocaleString('en-US')+'</td></tr>'+
+      '<tr><td>適用稅率</td><td>'+rateTxt+'</td></tr>'+
+      '<tr class="hl"><td>應納稅額</td><td>'+Math.round(tax).toLocaleString('en-US')+'</td></tr>'+
+      (re?'<tr><td>− 重購退稅</td><td>'+Math.round(refund).toLocaleString('en-US')+'</td></tr><tr class="hl"><td>重購退稅後實際負擔</td><td>'+Math.round(net).toLocaleString('en-US')+'</td></tr>':'')+cmpRow;
+    var warnHtml = warn.length ? '<div class="disclaimer" style="margin:0 0 18px;">'+warn.join('<br>')+'</div>' : '';
+    T.html('tr',
+      warnHtml+
+      '<div class="result"><div class="lead">'+lead+'</div><div class="big">'+T.nt(net)+'</div><div class="sub">'+sub+'</div>'+
+      '<div class="kpis">'+kpi('持有期間', holdTxt)+kpi('課稅所得', T.nt(gain), gain<=0?'':'warn')+kpi('適用稅率', rateTxt)+kpi('稅後實拿（所得 − 稅）', T.nt(gain-net), 'good')+'</div></div>'+
+      '<div class="panel"><h3>計算明細（單位：元）</h3><div class="tbl-wrap"><table class="tbl"><tbody>'+rows+'</tbody></table></div></div>');
+  }
+  T.bind(document.getElementById('tf'), calc);
+})();
+</script>
+<script>
+(function(){
+  var RATES=[45,35,20,15], TIER_YRS=[2,5,10];
+  var CUTOFF=new Date('2023-07-01');
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  function f(n){ return Math.round(n).toLocaleString('en-US'); }
+  var d=new Date(); T.$('p_sold').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+
+  function gate(acq, exc){
+    var stopTxt =
+      '<strong>依目前規定，這份買約不能換約或轉售。</strong><br>'+
+      '平均地權條例第 47-4 條：預售屋、新建成屋買賣契約的買受人，簽約後不得讓與或轉售買約給第三人，也不得自行或委託刊登讓與、轉售廣告；建商和代銷同樣不得同意、協助或接受委託刊登。<br>'+
+      '違規可處新臺幣 <strong>50 萬至 300 萬元</strong>罰鍰（第 81-3 條，按戶棟計算）。<br><br>'+
+      '<strong>法律允許的例外：</strong><br>'+
+      '① 配偶、直系血親、二親等內旁系血親之間的讓與或轉售（不需核准）。<br>'+
+      '② 中央主管機關公告的特殊情形，且經縣市政府核准：例如非自願離職逾 6 個月、重大傷病需長期照顧、房屋因災害毀損無法居住、重大意外事故、買受人死亡而繼承人無意保留、共同買受人之間轉讓等；全國每 2 年限 1 戶（棟）。<br>'+
+      '③ 2023/7/1 以前簽訂的買約，依不溯及既往原則不受此限制。';
+    if(acq<CUTOFF) return {state:'ok', html:'<strong>可以：</strong>你的買約簽訂於 2023/7/1 之前，依內政部說明適用「不溯及既往」，不受禁止換約規定限制。<br>提醒：承接這份買約的新買方，之後若要再轉售就會受到限制，成交前可以先跟對方說明。'};
+    if(exc==='rel') return {state:'ok', html:'<strong>可以：</strong>配偶、直系血親、二親等內旁系血親之間的讓與，法律上不需要核准。<br>提醒：下方稅務試算以一般價差交易概算，親屬間的價款認定與稅負不同，請與會計師確認。'};
+    if(exc==='appr') return {state:'warn', html:'<strong>有條件可以：</strong>屬中央公告的特殊情形且<strong>已取得縣市政府核准</strong>才能換約，全國每 2 年限 1 戶（棟）。請確認核准文件齊全後再簽約，並留意不得刊登換約廣告。'};
+    return {state:'stop', html:stopTxt};
+  }
+
+  function calc(){
+    var P=T.num('p_total')*10000, A=T.num('p_paid')*10000, S=T.num('p_new')*10000, swap=T.num('p_swap')*10000, agent=T.num('p_agent')*10000;
+    var acq=new Date(T.val('p_acq')), sold=new Date(T.val('p_sold'));
+    if(isNaN(acq)||isNaN(sold)){ T.html('pg',''); T.html('pr','<div class="note">請輸入兩個日期。</div>'); return; }
+    var g=gate(acq, T.radio('p_exc'));
+    T.html('pg','<div class="gate '+g.state+'">'+g.html+'</div>');
+    T.$('pf2').hidden = (g.state==='stop');
+    if(g.state==='stop'){ T.html('pr',''); return; }
+    if(sold<=acq){ T.html('pr','<div class="result"><div class="lead">日期有誤</div><div class="sub">換約日必須晚於取得買約日。</div></div>'); return; }
+    if(A>P){ T.html('pr','<div class="result"><div class="lead">數字有誤</div><div class="sub">已付款不能大於原買賣總價。</div></div>'); return; }
+    var receive=S-P+A;
+    var fee = T.radio('p_nofee')==='1' ? Math.min(receive*0.03, 300000) : (swap+agent);
+    var gain=receive-A-fee;
+    var tier=T.holdTier(acq,sold), rate=RATES[tier];
+    var tax=Math.max(gain,0)*rate/100;
+    var cash=receive-swap-agent-tax;
+    var profit=cash-A;
+    var hold=T.years(acq,sold);
+    var holdTxt=Math.floor(hold)+' 年 '+Math.round((hold-Math.floor(hold))*12)+' 個月';
+    var tip='';
+    if(tier<3 && gain>0){
+      var next=T.addYears(acq,TIER_YRS[tier]); next.setDate(next.getDate()+1);
+      var ds=next.getFullYear()+'/'+String(next.getMonth()+1).padStart(2,'0')+'/'+String(next.getDate()).padStart(2,'0');
+      var save=gain*(rate-RATES[tier+1])/100;
+      tip='<div class="disclaimer" style="margin:0 0 18px;"><strong>稅率降級提醒：</strong>若把簽約日延到 '+ds+' 之後，稅率由 '+rate+'% 降為 '+RATES[tier+1]+'%，以目前數字估計可少繳約 '+T.nt(save)+'。（是否值得等，還要看市場與買方意願。）</div>';
+    }
+    var lossNote = gain<=0 ? '換約價差扣除費用後沒有所得，不用繳房地合一稅。' : '依「持有期間 '+holdTxt+'」適用 '+rate+'% 稅率。';
+    var rows=
+      '<tr><td>換約總價 − 原買賣總價（價差）</td><td>'+f(S-P)+'</td></tr>'+
+      '<tr><td>+ 你已付款（由新買方返還）</td><td>'+f(A)+'</td></tr>'+
+      '<tr class="hl"><td>實際收取價金</td><td>'+f(receive)+'</td></tr>'+
+      '<tr><td>− 已付款（取得成本）</td><td>'+f(A)+'</td></tr>'+
+      '<tr><td>− 可減除費用'+(T.radio('p_nofee')==='1'?'（按 3% 估算）':'（換約費＋仲介費）')+'</td><td>'+f(fee)+'</td></tr>'+
+      '<tr class="hl"><td>課稅所得</td><td>'+f(gain)+'</td></tr>'+
+      '<tr><td>房地合一稅（'+rate+'%）</td><td>'+f(tax)+'</td></tr>'+
+      '<tr><td>實收價金 − 換約費 − 仲介費 − 稅 ＝ 你拿到的現金</td><td>'+f(cash)+'</td></tr>'+
+      '<tr class="hl"><td>扣除你當初已付款後的淨獲利</td><td>'+f(profit)+'</td></tr>';
+    T.html('pr', tip+
+      '<div class="result"><div class="lead">換約後，賣方實際拿到的現金</div><div class="big">'+T.nt(cash)+'</div><div class="sub">其中包含你原本已付的 '+T.wan(A,0)+'，淨獲利 '+T.nt(profit)+'。'+lossNote+'</div>'+
+      '<div class="kpis">'+kpi('實際收取價金', T.nt(receive))+kpi('房地合一稅', T.nt(tax), 'warn')+kpi('換約費＋仲介費', T.nt(swap+agent))+kpi('持有期間', holdTxt)+'</div></div>'+
+      '<div class="panel"><h3>計算明細（單位：元）</h3><div class="tbl-wrap"><table class="tbl"><tbody>'+rows+'</tbody></table></div></div>');
+  }
+  T.bind(document.getElementById('pf'), calc);
+  T.bind(document.getElementById('pf2'), calc);
+})();
+</script>
+<script>
+(function(){
+  var CASES=[
+    {id:'first',t:'自住首購',one:'買第一間房自住，最在意資金、貸款與買方稅費。',
+     taxes:['契稅：房屋評定現值 × 6%，買方負擔。','印花稅：（土地公告現值＋房屋評定現值）× 0.1%，課徵基礎是公契金額，不是成交價；買方負擔。','登記規費：（申報地價＋房屋評定現值）× 0.1%，另加書狀費。','房屋稅：自住（本人、配偶或直系親屬實際居住並設籍）稅率 1.2%，全國單一自住房屋為 1%。','青安 3.0（2026/8/1 起受理）：未滿 50 歲、本人年所得 200 萬內、額度 1,000 萬（新婚 1,200 萬、育有未成年子女 1,500 萬）、房價依縣市有上限，桃園以「其他縣市」2,000 萬判讀。'],
+     tools:[['qingan.html','青安 3.0 資格檢測'],['calc.html','萬能房產計算機'],['check6.html','中古屋查核清單']],
+     docs:['身分證明與戶籍資料','近期所得證明（扣繳憑單、薪資轉帳存摺）','土地與建物謄本','買賣契約書、不動產說明書','銀行貸款申請與財力證明文件'],
+     traps:['以為印花稅按成交價計算，其實是土地公告現值加房屋評定現值。','以為青安沒有房價上限，3.0 新增了房價與年齡、所得門檻。','自住稅率要「設籍並實際居住」，沒設籍就套非自住稅率。']},
+    {id:'second',t:'第二戶／投資買房',one:'已有房子再買，貸款成數、持有成本和將來賣出的稅都要先算。',
+     taxes:['央行信用管制（2026/9/18 起）：自然人第二戶貸款成數上限 7 成，無寬限期；第三戶以上、高價住宅與公司法人上限 3 成，無寬限期。','房屋稅：非自住法定稅率區間 2% 至 4.8%，全國歸戶，各縣市依戶數分級公告。','租金收入要併入綜合所得稅申報。','將來賣出：房地合一稅依持有期間 2 年內 45%、2 至 5 年 35%、5 至 10 年 20%、超過 10 年 15%。'],
+     tools:[['calc.html','萬能房產計算機'],['tax.html','房地合一稅試算']],
+     docs:['名下房貸與房屋資料（銀行會查）','租賃契約（若要出租）','資金來源與財力證明'],
+     traps:['以為第二戶也有寬限期，現行規定沒有。','低估持有成本，非自住房屋稅是自住的好幾倍。','短期持有就賣，稅率可能高達 45%。']},
+    {id:'sellself',t:'賣自住房',one:'賣掉自己住的房子，最大的稅務關鍵是能不能用自住優惠。',
+     taxes:['房地合一自住優惠：課稅所得 400 萬元以下免稅，超過部分稅率 10%。','適用條件：本人、配偶或未成年子女設有戶籍並持有加居住連續滿 6 年；出售前 6 年內無出租或營業；6 年內沒有用過此優惠。','沒有用到優惠時，依持有期間稅率 45%、35%、20%、15%。','土地增值稅由賣方負擔，另算；自用住宅用地優惠稅率須符合設籍、無出租等條件，由地方稅務局核定。','申報期限：所有權移轉登記日次日起 30 日內向國稅局申報。'],
+     tools:[['tax.html','房地合一稅試算'],['calc.html','萬能房產計算機']],
+     docs:['買進與賣出契約、實價登錄資料','取得與出售的費用憑證（仲介費、整修、稅費）','戶籍謄本，證明設籍期間','土地增值稅試算或繳款資料'],
+     traps:['以為自住優惠每年都能用，其實 6 年內只能用一次。','期間內有出租或營業使用，就喪失優惠。','費用沒有憑證，只能按成交價 3%（上限 30 萬）估算。']},
+    {id:'sellinv',t:'賣非自住／短期持有',one:'投資或持有不久就賣，持有期間決定稅率，差一天可能差好幾成。',
+     taxes:['個人：持有 2 年內 45%、超過 2 年至 5 年 35%、超過 5 年至 10 年 20%、超過 10 年 15%。','營利事業（公司）：2 年內 45%、2 至 5 年 35%、超過 5 年 20%。','持有期間以買進與賣出的契約簽訂日計算，超過才進入下一級（滿 2 年又 1 天才適用 35%）。','課稅所得 = 售價 − 取得成本 − 相關費用 − 土地漲價總數額。','虧損可在 10 年內用其他房地合一所得扣除。'],
+     tools:[['tax.html','房地合一稅試算']],
+     docs:['買賣契約書（確認簽約日）','費用憑證','土地增值稅試算表（取得「土地漲價總數額」）'],
+     traps:['簽約日差一天，稅率可能從 35% 掉到 20%。','忘了土地漲價總數額可以從房地合一所得扣除。','以為公司和個人稅率一樣。']},
+    {id:'swap',t:'換屋',one:'先賣後買或先買後賣，重購退稅與貸款管制是兩個重點。',
+     taxes:['重購退稅：出售與重購的移轉登記日差在 2 年內；兩間房屋，本人、配偶或未成年子女都須設籍並居住，且無出租、營業；重購須登記在本人或配偶名下。','退稅金額 = 已繳稅額 ×（重購價額 ÷ 出售價額），比率上限 100%。','先賣後買：重購移轉登記次日起 5 年內申請退稅；先買後賣：申報出售時按比率扣抵。','重購後的自住房地 5 年內不能改作其他用途或再次移轉，否則追繳。','貸款：換屋協處措施須向銀行簽署切結，撥款後 18 個月內完成原有房屋的出售。'],
+     tools:[['tax.html','房地合一稅試算'],['calc.html','萬能房產計算機']],
+     docs:['新舊兩間房屋的買賣契約與移轉登記資料','戶籍謄本（兩間房都要設籍居住的證明）','銀行換屋協處切結書（若有）'],
+     traps:['新房只登記在子女或父母名下，不符合重購退稅。','重購後 5 年內出租，被追繳退稅。','自住優惠與重購退稅能否同時用，財政部公告沒有說明，請向國稅局確認。']},
+    {id:'presale',t:'預售屋／新建成屋',one:'預售屋、新建成屋換約有明確的禁止規定，先確認能不能換再談價格。',
+     taxes:['平均地權條例第 47-4 條：2023/7/1 起簽訂的預售屋、新建成屋買約，簽約後不得讓與或轉售，也不得自行或委託刊登讓與廣告；建商與代銷不得同意或協助。','例外：配偶、直系血親、二親等內旁系血親之間；或中央公告的特殊情形且經縣市政府核准（全國每 2 年限 1 戶）。','違規可處新臺幣 50 萬至 300 萬元罰鍰（第 81-3 條，按戶棟）。','2023/7/1 以前簽訂的買約，依不溯及既往原則不受此限制。','可換約時，房地合一稅以「實際收取價金」認列收入，持有期間從與建商簽約日起算。'],
+     tools:[['presale.html','預售屋換約速算']],
+     docs:['與建商的買賣契約書（確認簽約日）','已付款證明','縣市政府核准文件（特殊情形）'],
+     traps:['以為「紅單」還能轉，現行規定禁止。','刊登換約廣告本身也違法。','承接 2023 年以前的買約，之後再轉售就會受限。']},
+    {id:'inherit',t:'繼承／贈與不動產',one:'房子要傳給家人，繼承、贈與的稅差很大，先算清楚再決定。',
+     taxes:['遺產稅（繼承發生在 115 年，2026 年）：免稅額 1,333 萬元；扣除額：配偶 553 萬、直系血親卑親屬每人 56 萬（未成年每年加扣 56 萬）、父母每人 138 萬、喪葬費 138 萬。','遺產稅稅率：課稅遺產淨額 5,621 萬以下 10%、至 1 億 1,242 萬 15%、超過 20%。','贈與稅：每人每年免稅額 244 萬；稅率 2,811 萬以下 10%、至 5,621 萬 15%、超過 20%；夫妻間相互贈與免稅。','被繼承人死亡前 2 年內贈與特定親屬的財產，要併入遺產計算遺產稅。','手足特留分刪除：自 2027/2/17 起施行，以被繼承人死亡日為準；配偶、直系血親卑親屬、父母特留分為應繼分 1/2，祖父母 1/3。','土地稅：土地贈與須課土地增值稅，納稅義務人是受贈人；繼承移轉的處理與日後出售成本，以地方稅務局認定為準。'],
+     tools:[['inherit.html','繼承分配計算機']],
+     docs:['被繼承人除戶謄本、繼承系統表','全部財產與債務清冊','贈與契約與近 2 年贈與紀錄'],
+     traps:['以為現在過戶一定比等繼承省稅，要把贈與稅、土增稅與日後賣出的成本一起比。','忘了死亡前 2 年的贈與要併入遺產。','遺囑沒檢視：修法後手足特留分刪除，舊遺囑內容要重新確認。']},
+    {id:'hold',t:'出租／持有',one:'房子持有期間的稅，每年都要繳，先估準才不會吃掉報酬。',
+     taxes:['房屋稅：自住 1.2%、全國單一自住 1%；非自住法定區間 2% 至 4.8%，全國歸戶，各縣市依戶數分級公告。','地價稅：依申報地價與稅率計算，自用住宅有優惠稅率，須符合設籍等條件。','租金收入要併入綜合所得稅申報，可扣除必要費用，標準以國稅局公告為準。','空置、出租、營業使用，都不算自住。'],
+     tools:[['calc.html','萬能房產計算機（每年持有成本）']],
+     docs:['房屋稅單、地價稅單','租賃契約','租金收入與費用憑證'],
+     traps:['沒設籍就拿不到自住稅率。','忘了租金收入要申報。','多戶持有全國歸戶後，才發現稅率被拉高。']}
+  ];
+  var seg=T.$('caseSeg');
+  seg.innerHTML=CASES.map(function(c,i){ return '<label><input type="radio" name="s_case" value="'+c.id+'"'+(i===0?' checked':'')+'><span>'+c.t+'</span></label>'; }).join('');
+  function li(arr){ return '<ul class="note" style="padding-left:1.3em;margin:0;line-height:1.9;">'+arr.map(function(x){ return '<li>'+x+'</li>'; }).join('')+'</ul>'; }
+  function render(){
+    var id=T.radio('s_case'), c=CASES.filter(function(x){ return x.id===id; })[0]||CASES[0];
+    var btns=c.tools.map(function(t){ return '<a class="btn btn-orange" href="'+t[0]+'" data-go="'+t[0].replace('.html','')+'" style="margin:0 8px 8px 0;">'+t[1]+'</a>'; }).join('');
+    T.html('sr',
+      '<div class="result"><div class="lead">你選的案型</div><div class="big" style="font-size:clamp(1.3rem,5vw,1.8rem);font-family:inherit;font-weight:900;">'+c.t+'</div><div class="sub">'+c.one+'</div></div>'+
+      '<div class="panel"><h3>該注意的稅目與規定</h3>'+li(c.taxes)+'</div>'+
+      '<div class="panel"><h3>直接試算</h3><div>'+btns+'</div></div>'+
+      '<div class="panel"><h3>要準備的資料</h3>'+li(c.docs)+'</div>'+
+      '<div class="panel"><h3>常見的雷</h3>'+li(c.traps)+'</div>');
+  }
+  seg.addEventListener('change', render);
+  render();
+})();
+</script>
+<script>
+(function(){
+  function gcd(a,b){ return b?gcd(b,a%b):a; }
+  function R(n,d){ var g=gcd(Math.abs(n),Math.abs(d))||1; return [n/g,d/g]; }
+  function mul(a,b){ return R(a[0]*b[0],a[1]*b[1]); }
+  function divk(a,k){ return R(a[0],a[1]*k); }
+  function val(a){ return a[0]/a[1]; }
+  function fr(a){ return a[0]===0?'0':(a[1]===1?String(a[0]):a[0]+'/'+a[1]); }
+  function pc(a){ return (val(a)*100).toFixed(2).replace(/\.?0+$/,'')+'%'; }
+  function kpi(k,v,c){ return '<div class="kpi'+(c?' '+c:'')+'"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>'; }
+  function f(n){ return Math.round(n).toLocaleString('en-US'); }
+  var d=new Date(); T.$('i_death').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  var NEWLAW=new Date('2027-02-17');
+
+  function calc(){
+    var death=new Date(T.val('i_death'));
+    if(isNaN(death)){ T.html('ir','<div class="note">請輸入被繼承人死亡日。</div>'); return; }
+    var W=10000;
+    var total=T.num('i_total')*W, debt=T.num('i_debt')*W, gift=T.num('i_gift')*W;
+    var sp=T.radio('i_sp')==='1', kids=Math.max(0,Math.round(T.num('i_kids'))), minorY=Math.max(0,Math.round(T.num('i_minor')));
+    var par=parseInt(T.val('i_par'),10)||0, sib=Math.max(0,Math.round(T.num('i_sib'))), gp=parseInt(T.val('i_gp'),10)||0;
+    var dis=Math.max(0,Math.round(T.num('i_dis'))), oth=Math.max(0,Math.round(T.num('i_oth')));
+    var newLaw = death>=NEWLAW;
+    var net=Math.max(0,total-debt);
+
+    /* 順位與應繼分（民法 1138、1144） */
+    var rank = kids>0?1 : par>0?2 : sib>0?3 : gp>0?4 : 0;
+    var rankName={1:'第一順位（子女）',2:'第二順位（父母）',3:'第三順位（兄弟姊妹）',4:'第四順位（祖父母）',0:'無'}[rank];
+    var cnt={1:kids,2:par,3:sib,4:gp,0:0}[rank];
+    var groups=[];
+    var resv={sp:[1,2],kids:[1,2],par:[1,2],sib:(newLaw?[0,1]:[1,3]),gp:[1,3]};
+    var nm={1:'直系血親卑親屬（子女）',2:'父母',3:'兄弟姊妹',4:'祖父母'};
+    var key={1:'kids',2:'par',3:'sib',4:'gp'};
+    if(sp){
+      if(rank===0) groups.push({n:'配偶',c:1,g:[1,1],r:resv.sp});
+      else if(rank===1){ var n=kids+1; groups.push({n:'配偶',c:1,g:[1,n],r:resv.sp}); groups.push({n:nm[1],c:kids,g:[kids,n],r:resv.kids}); }
+      else if(rank===4){ groups.push({n:'配偶',c:1,g:[2,3],r:resv.sp}); groups.push({n:nm[4],c:gp,g:[1,3],r:resv.gp}); }
+      else { groups.push({n:'配偶',c:1,g:[1,2],r:resv.sp}); groups.push({n:nm[rank],c:cnt,g:[1,2],r:resv[key[rank]]}); }
+    } else if(rank>0){
+      groups.push({n:nm[rank],c:cnt,g:[1,1],r:resv[key[rank]]});
+    }
+    var rows='', sumRes=0;
+    groups.forEach(function(g){
+      var ph=divk(g.g,g.c), rs=mul(ph,g.r);
+      sumRes+=val(rs)*g.c;
+      rows+='<tr><td>'+g.n+'</td><td>'+g.c+'</td><td>'+fr(ph)+'（'+pc(ph)+'）</td><td>'+f(val(ph)*net)+'</td><td>'+(val(rs)===0?'無':fr(rs)+'（'+pc(rs)+'）')+'</td><td>'+(val(rs)===0?'—':f(val(rs)*net))+'</td></tr>';
+    });
+    var free = Math.max(0,1-sumRes);
+
+    /* 遺產稅（115 年度） */
+    var gross=total+gift;
+    var ded={debt:debt, sp:sp?5530000:0, kids:kids*560000, minor:(kids>0?minorY*560000:0), par:par*1380000, funeral:1380000, dis:dis*6930000, oth:oth*560000};
+    var dedSum=0; for(var k in ded) dedSum+=ded[k];
+    var exempt=13330000;
+    var taxable=Math.max(0,gross-exempt-dedSum);
+    var tax=0, rate=0, diff=0;
+    if(taxable<=56210000){ rate=10; diff=0; } else if(taxable<=112420000){ rate=15; diff=2810500; } else { rate=20; diff=8431500; }
+    tax=taxable>0? taxable*rate/100-diff : 0;
+    var after=net-tax;
+
+    var warn='';
+    if(death<new Date('2024-01-01')) warn+='<div class="gate warn">死亡日早於 2024/1/1：免稅額與扣除額金額不同（本工具使用 115 年度數字），遺產稅部分請另查當年度公告。</div>';
+    if(death>=new Date('2027-01-01')) warn+='<div class="gate warn">死亡日在 2027 年以後：遺產稅免稅額與扣除額由財政部每年公告，本工具暫用 115 年度數字，請對照最新公告。</div>';
+    if(rank===0 && !sp) warn+='<div class="gate stop">沒有配偶，也沒有第一至第四順位的法定繼承人，無法定繼承人時遺產的歸屬依民法與國有財產規定辦理，請洽專業人員。</div>';
+    var sibNote='';
+    if(sib>0){
+      sibNote='<div class="gate '+(newLaw?'ok':'warn')+'"><strong>兄弟姊妹特留分：</strong>'+(newLaw?'你輸入的死亡日在 2027/2/17（新法施行日）之後，兄弟姊妹的特留分已刪除（但只要有兄弟姊妹是法定繼承人，沒有遺囑時仍可依應繼分繼承）。':'你輸入的死亡日在 2027/2/17 之前，適用舊法，兄弟姊妹仍有應繼分 1/3 的特留分。若死亡日在 2027/2/17 之後，這項保障就沒有了。')+'</div>';
+    }
+    T.html('ir',
+      warn+sibNote+
+      '<div class="result"><div class="lead">預估遺產稅（115 年度標準）</div><div class="big">'+T.nt(tax)+'</div>'+
+      '<div class="sub">課稅遺產淨額 '+T.nt(taxable)+(taxable>0?'，適用 '+rate+'% 稅率。':'，未超過免稅額，不用繳遺產稅。')+' 法定繼承人：'+(sp?'配偶＋':'')+rankName+'。</div>'+
+      '<div class="kpis">'+kpi('遺產淨額（總額 − 債務）',T.nt(net))+kpi('扣除免稅額與扣除額合計',T.nt(exempt+dedSum))+kpi('預估稅後淨遺產',T.nt(after),'good')+kpi('遺囑可自由處分',T.nt(free*net)+'（'+(free*100).toFixed(1).replace(/\.0$/,'')+'%）','warn')+'</div></div>'+
+      '<div class="panel"><h3>誰分多少：應繼分與特留分（以遺產淨額計，稅前）</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>繼承人</th><th>人數</th><th>每人應繼分</th><th>每人金額（元）</th><th>每人特留分</th><th>特留分金額（元）</th></tr></thead><tbody>'+(rows||'<tr><td colspan="6">沒有符合的繼承人</td></tr>')+'</tbody></table></div>'+
+      '<p class="note" style="margin:10px 0 0;">特留分是遺囑也不能侵害的最低保障：配偶、直系血親卑親屬、父母為應繼分的 1/2，祖父母為 1/3；兄弟姊妹'+(newLaw?'已刪除':'（舊法）為 1/3')+'。「遺囑可自由處分」是淨遺產扣掉各人特留分合計後可以自由指定的部分。</p></div>'+
+      '<div class="panel"><h3>遺產稅計算明細（單位：元）</h3><div class="tbl-wrap"><table class="tbl"><tbody>'+
+      '<tr><td>遺產總額'+(gift>0?'（含死亡前 2 年贈與）':'')+'</td><td>'+f(gross)+'</td></tr>'+
+      '<tr><td>− 免稅額</td><td>'+f(exempt)+'</td></tr>'+
+      '<tr><td>− 債務</td><td>'+f(ded.debt)+'</td></tr>'+
+      '<tr><td>− 配偶扣除額（553 萬）</td><td>'+f(ded.sp)+'</td></tr>'+
+      '<tr><td>− 直系血親卑親屬扣除額（每人 56 萬）</td><td>'+f(ded.kids)+'</td></tr>'+
+      '<tr><td>− 未成年加扣（每年 56 萬）</td><td>'+f(ded.minor)+'</td></tr>'+
+      '<tr><td>− 父母扣除額（每人 138 萬）</td><td>'+f(ded.par)+'</td></tr>'+
+      '<tr><td>− 喪葬費扣除額（138 萬）</td><td>'+f(ded.funeral)+'</td></tr>'+
+      '<tr><td>− 重度身心障礙特別扣除額（每人 693 萬）</td><td>'+f(ded.dis)+'</td></tr>'+
+      '<tr><td>− 受扶養兄弟姊妹、祖父母扣除額（每人 56 萬）</td><td>'+f(ded.oth)+'</td></tr>'+
+      '<tr class="hl"><td>課稅遺產淨額</td><td>'+f(taxable)+'</td></tr>'+
+      '<tr><td>稅率 '+rate+'%（累進差額 '+f(diff)+'）</td><td>'+f(tax)+'</td></tr>'+
+      '</tbody></table></div><p class="note" style="margin:10px 0 0;">稅率級距：課稅遺產淨額 5,621 萬以下 10%、至 1 億 1,242 萬 15%、超過 20%。</p></div>');
+  }
+  T.bind(document.getElementById('inf'), calc);
+})();
+</script>
+<script>
+(function(){
+  var DATA = {"中壢區":{"births":{"小":"108.09.02 至 109.09.01","中":"102.09.02 至 103.09.01"},"notes":{"小":["後寮里（1、19-20）為龍岡、普仁國小自由學區。","仁愛里（7、21-22）為華勛、普仁國小自由學區。","仁福里（2-6）為普仁、富台國小自由學區。","龍東里（1-9、23）為忠貞、富台國小自由學區。","龍安里（1-11）為富台、霄裡國小自由學區。","健行里（1、26）為信義、林森國小自由學區。","內定里（9-16、27）為內定、忠福國小自由學區。","中央里（9-12、14-15）為中壢、新街國小自由學區。","五權里（1-6）為新明、文化國小自由學區。","龍慈里（4-10）為普仁、富台國小自由學區。","至善里（2-5）為普仁、富台國小自由學區。","興和里（7-14）為青埔、興國國小自由學區。","過嶺里（6）為中平、頭洲、上大、大崙國小自由學區。","過嶺里（7-12）為中平、頭洲、上大國小自由學區。","仁愛里（20）為自立、中正國小自由學區。","東興（4-13、20-21）為中壢、林森國小自由學區。"],"中":["過嶺里（5-7）為過嶺、大崙國中自由學區。","忠義里（1-5、11-14）為興南、內壢國中自由學區。","仁美里（22-23、26）為自強、東興、龍興國中自由學區。","普慶里全部為東興、龍興國中自由學區。","林森里（10）為中壢、龍興國中自由學區。","興和里（7-14）為興南、青埔國中自由學區"]},"小":[{"s":"龍岡國小","d":"中壢區","p":"4588582","a":"振興，龍興，龍德（1-3、5-20），龍慈（1-3），◎後寮（1、19-20）","i":[{"l":"振興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍德","a":false,"r":[[1,3],[5,20]],"pt":[],"n":null,"f":false},{"l":"龍慈","a":false,"r":[[1,3]],"pt":[],"n":null,"f":false},{"l":"後寮","a":false,"r":[[1,1],[19,20]],"pt":[],"n":null,"f":true}]},{"s":"普仁國小","d":"中壢區","p":"4563830","a":"普慶，後寮（2-18、21-29），仁美（1-21、27-32），至善（1），龍慈（11-21），龍德（4），◎仁愛（7、21-22），◎仁福（2-6），◎後寮（1、19-20），◎龍慈（4-10），◎至善（2-5）","i":[{"l":"普慶","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後寮","a":false,"r":[[2,18],[21,29]],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[1,21],[27,32]],"pt":[],"n":null,"f":false},{"l":"至善","a":false,"r":[[1,1]],"pt":[],"n":null,"f":false},{"l":"龍慈","a":false,"r":[[11,21]],"pt":[],"n":null,"f":false},{"l":"龍德","a":false,"r":[[4,4]],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[7,7],[21,22]],"pt":[],"n":null,"f":true},{"l":"仁福","a":false,"r":[[2,6]],"pt":[],"n":null,"f":true},{"l":"後寮","a":false,"r":[[1,1],[19,20]],"pt":[],"n":null,"f":true},{"l":"龍慈","a":false,"r":[[4,10]],"pt":[],"n":null,"f":true},{"l":"至善","a":false,"r":[[2,5]],"pt":[],"n":null,"f":true}]},{"s":"富台國小","d":"中壢區","p":"4563335","a":"中堅，龍昌，仁福（1、7-21、24-25），◎仁福（2-6），◎至善（2-5），至善（6-22），◎龍慈（4-10），龍慈（22-24），◎龍東（1-9、23），◎龍安（1-11）","i":[{"l":"中堅","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍昌","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁福","a":false,"r":[[1,1],[7,21],[24,25]],"pt":[],"n":null,"f":false},{"l":"仁福","a":false,"r":[[2,6]],"pt":[],"n":null,"f":true},{"l":"至善","a":false,"r":[[2,5]],"pt":[],"n":null,"f":true},{"l":"至善","a":false,"r":[[6,22]],"pt":[],"n":null,"f":false},{"l":"龍慈","a":false,"r":[[4,10]],"pt":[],"n":null,"f":true},{"l":"龍慈","a":false,"r":[[22,24]],"pt":[],"n":null,"f":false},{"l":"龍東","a":false,"r":[[1,9],[23,23]],"pt":[],"n":null,"f":true},{"l":"龍安","a":false,"r":[[1,11]],"pt":[],"n":null,"f":true}]},{"s":"信義國小","d":"中壢區","p":"4573780","a":"信義，正義，東興（1-3、22），明德（1-24），健行（9、16-25），普強（2-6、8-24），◎健行（1、26）","i":[{"l":"信義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"正義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"東興","a":false,"r":[[1,3],[22,22]],"pt":[],"n":null,"f":false},{"l":"明德","a":false,"r":[[1,24]],"pt":[],"n":null,"f":false},{"l":"健行","a":false,"r":[[9,9],[16,25]],"pt":[],"n":null,"f":false},{"l":"普強","a":false,"r":[[2,6],[8,24]],"pt":[],"n":null,"f":false},{"l":"健行","a":false,"r":[[1,1],[26,26]],"pt":[],"n":null,"f":true}]},{"s":"華勛國小","d":"中壢區","p":"4661587","a":"仁祥，華勛，仁德，仁和，華愛，仁愛（1-6、8-19），仁美（22-26），仁福（22-23），◎仁愛（7、21-22）","i":[{"l":"仁祥","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"華勛","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁和","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"華愛","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[1,6],[8,19]],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[22,26]],"pt":[],"n":null,"f":false},{"l":"仁福","a":false,"r":[[22,23]],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[7,7],[21,22]],"pt":[],"n":null,"f":true}]},{"s":"中原國小","d":"中壢區","p":"4388200","a":"普仁，普忠（1-18、20），普強（1、7），仁義（1-8）","i":[{"l":"普仁","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普忠","a":false,"r":[[1,18],[20,20]],"pt":[],"n":null,"f":false},{"l":"普強","a":false,"r":[[1,1],[7,7]],"pt":[],"n":null,"f":false},{"l":"仁義","a":false,"r":[[1,8]],"pt":[],"n":null,"f":false}]},{"s":"內壢國小","d":"中壢區","p":"4635888","a":"內壢，成功，福德，中原（1-7、10-30），忠孝（1-17、22）","i":[{"l":"內壢","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"成功","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"福德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中原","a":false,"r":[[1,7],[10,30]],"pt":[],"n":null,"f":false},{"l":"忠孝","a":false,"r":[[1,17],[22,22]],"pt":[],"n":null,"f":false}]},{"s":"內定國小","d":"中壢區","p":"4524624","a":"內定（1-8、17-26），◎內定（9-16、27），文化（1-20、22-24）","i":[{"l":"內定","a":false,"r":[[1,8],[17,26]],"pt":[],"n":null,"f":false},{"l":"內定","a":false,"r":[[9,16],[27,27]],"pt":[],"n":null,"f":true},{"l":"文化","a":false,"r":[[1,20],[22,24]],"pt":[],"n":null,"f":false}]},{"s":"自立國小","d":"中壢區","p":"4559130","a":"自立，自信，普忠（19），◎仁愛（20），莊敬（1-14、18-20），忠義（6-7、10、15-17）","i":[{"l":"自立","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自信","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普忠","a":false,"r":[[19,19]],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[20,20]],"pt":[],"n":null,"f":true},{"l":"莊敬","a":false,"r":[[1,14],[18,20]],"pt":[],"n":null,"f":false},{"l":"忠義","a":false,"r":[[6,7],[10,10],[15,17]],"pt":[],"n":null,"f":false}]},{"s":"興仁國小","d":"中壢區","p":"4355753","a":"興仁，自強，自治，莊敬（15-17、21）","i":[{"l":"興仁","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自強","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自治","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"莊敬","a":false,"r":[[15,17],[21,21]],"pt":[],"n":null,"f":false}]},{"s":"中正國小","d":"中壢區","p":"4559313","a":"中正，中山，篤行，中興，◎仁愛（20）","i":[{"l":"中正","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中山","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"篤行","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[20,20]],"pt":[],"n":null,"f":true}]},{"s":"元生國小","d":"中壢區","p":"","a":"復華，復興，興華，和平，文化（21、25-36），忠義（8-9），中原（8-9），忠孝（18-21）","i":[{"l":"復華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"復興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"和平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"文化","a":false,"r":[[21,21],[25,36]],"pt":[],"n":null,"f":false},{"l":"忠義","a":false,"r":[[8,9]],"pt":[],"n":null,"f":false},{"l":"中原","a":false,"r":[[8,9]],"pt":[],"n":null,"f":false},{"l":"忠孝","a":false,"r":[[18,21]],"pt":[],"n":null,"f":false}]},{"s":"中壢國小","d":"中壢區","p":"4255216","a":"中建，中壢，石頭，中央（3、5-8、22），◎中央（9-12、14-15），◎東興（4-13、20-21），永興（1-5），興南（1-3、5、8-10），中榮（1、4-5、9、12-19）","i":[{"l":"中建","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中壢","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"石頭","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中央","a":false,"r":[[3,3],[5,8],[22,22]],"pt":[],"n":null,"f":false},{"l":"中央","a":false,"r":[[9,12],[14,15]],"pt":[],"n":null,"f":true},{"l":"東興","a":false,"r":[[4,13],[20,21]],"pt":[],"n":null,"f":true},{"l":"永興","a":false,"r":[[1,5]],"pt":[],"n":null,"f":false},{"l":"興南","a":false,"r":[[1,3],[5,5],[8,10]],"pt":[],"n":null,"f":false},{"l":"中榮","a":false,"r":[[1,1],[4,5],[9,9],[12,19]],"pt":[],"n":null,"f":false}]},{"s":"新街國小","d":"中壢區","p":"4523202","a":"新街，普義，幸福，德義，中央（1-2、4、13、16-21），◎中央（9-12、14-15），忠福（1-8），興福（1-22），忠義（1-5、11-14），興南（4、6-7、13、16-17），水尾（2、4-23），仁義（9-23）","i":[{"l":"新街","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"幸福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"德義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中央","a":false,"r":[[1,2],[4,4],[13,13],[16,21]],"pt":[],"n":null,"f":false},{"l":"中央","a":false,"r":[[9,12],[14,15]],"pt":[],"n":null,"f":true},{"l":"忠福","a":false,"r":[[1,8]],"pt":[],"n":null,"f":false},{"l":"興福","a":false,"r":[[1,22]],"pt":[],"n":null,"f":false},{"l":"忠義","a":false,"r":[[1,5],[11,14]],"pt":[],"n":null,"f":false},{"l":"興南","a":false,"r":[[4,4],[6,7],[13,13],[16,17]],"pt":[],"n":null,"f":false},{"l":"水尾","a":false,"r":[[2,2],[4,23]],"pt":[],"n":null,"f":false},{"l":"仁義","a":false,"r":[[9,23]],"pt":[],"n":null,"f":false}]},{"s":"忠福國小","d":"中壢區","p":"4340192","a":"永福，忠福（9-21），◎內定（9-16、27）","i":[{"l":"永福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"忠福","a":false,"r":[[9,21]],"pt":[],"n":null,"f":false},{"l":"內定","a":false,"r":[[9,16],[27,27]],"pt":[],"n":null,"f":true}]},{"s":"青埔國小","d":"中壢區","p":"4531626","a":"青埔，青航（2-4、7-8），青園（8），◎興和（7-14），青溪，水尾（1、3）","i":[{"l":"青埔","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青航","a":false,"r":[[2,4],[7,8]],"pt":[],"n":null,"f":false},{"l":"青園","a":false,"r":[[8,8]],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[7,14]],"pt":[],"n":null,"f":true},{"l":"青溪","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"水尾","a":false,"r":[[1,1],[3,3]],"pt":[],"n":null,"f":false}]},{"s":"興國國小","d":"中壢區","p":"4258158","a":"興國，興平，金華，興和（1-6、15-18），興南（11-12、14-15、18-25），◎興和（7-14）","i":[{"l":"興國","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"金華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[1,6],[15,18]],"pt":[],"n":null,"f":false},{"l":"興南","a":false,"r":[[11,12],[14,15],[18,25]],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[7,14]],"pt":[],"n":null,"f":true}]},{"s":"林森國小","d":"中壢區","p":"4579213","a":"健行（2-8、10-15），◎健行（1、26），東興（14-19），◎東興（4-13、20-21），新興，林森","i":[{"l":"健行","a":false,"r":[[2,8],[10,15]],"pt":[],"n":null,"f":false},{"l":"健行","a":false,"r":[[1,1],[26,26]],"pt":[],"n":null,"f":true},{"l":"東興","a":false,"r":[[14,19]],"pt":[],"n":null,"f":false},{"l":"東興","a":false,"r":[[4,13],[20,21]],"pt":[],"n":null,"f":true},{"l":"新興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"林森","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"新明國小","d":"中壢區","p":"4933262","a":"◎五權（1-6），五權（7-11、23），五福（1-3、10-15、17-24），舊明（1-5、8、16-23），永興（6-12），三民，光明，永光，新明","i":[{"l":"五權","a":false,"r":[[1,6]],"pt":[],"n":null,"f":true},{"l":"五權","a":false,"r":[[7,11],[23,23]],"pt":[],"n":null,"f":false},{"l":"五福","a":false,"r":[[1,3],[10,15],[17,24]],"pt":[],"n":null,"f":false},{"l":"舊明","a":false,"r":[[1,5],[8,8],[16,23]],"pt":[],"n":null,"f":false},{"l":"永興","a":false,"r":[[6,12]],"pt":[],"n":null,"f":false},{"l":"三民","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"光明","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"永光","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"新明","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"芭里國小","d":"中壢區","p":"4228086","a":"芝芭（1-9、11-14）","i":[{"l":"芝芭","a":false,"r":[[1,9],[11,14]],"pt":[],"n":null,"f":false}]},{"s":"大崙國小","d":"中壢區","p":"4983424","a":"山東（1-6、15），過嶺5，◎過嶺6，芝芭（10），月眉，內厝","i":[{"l":"山東","a":false,"r":[[1,6],[15,15]],"pt":[],"n":null,"f":false},{"l":"過嶺","a":false,"r":[[5,5]],"pt":[],"n":null,"f":false},{"l":"過嶺","a":false,"r":[[6,6]],"pt":[],"n":null,"f":true},{"l":"芝芭","a":false,"r":[[10,10]],"pt":[],"n":null,"f":false},{"l":"月眉","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"內厝","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"山東國小","d":"中壢區","p":"4981323","a":"山東（7-14）","i":[{"l":"山東","a":false,"r":[[7,14]],"pt":[],"n":null,"f":false}]},{"s":"中平國小","d":"中壢區","p":"4902025","a":"過嶺(1-4、13-15)，松嶺，◎過嶺（6-12）","i":[{"l":"過嶺","a":false,"r":[[1,4],[13,15]],"pt":[],"n":null,"f":false},{"l":"松嶺","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"過嶺","a":false,"r":[[6,12]],"pt":[],"n":null,"f":true}]},{"s":"青園國小","d":"中壢區","p":"2871741","a":"洽溪，青航(1、5-6、9-10)，青園（1-7）","i":[{"l":"洽溪","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青航","a":false,"r":[[1,1],[5,6],[9,10]],"pt":[],"n":null,"f":false},{"l":"青園","a":false,"r":[[1,7]],"pt":[],"n":null,"f":false}]},{"s":"忠貞國小","d":"平鎮區","p":"4501450","a":"◎龍東（1-9、23），龍東（10-22、24-29），龍平，龍安（12-15），龍岡","i":[{"l":"龍東","a":false,"r":[[1,9],[23,23]],"pt":[],"n":null,"f":true},{"l":"龍東","a":false,"r":[[10,22],[24,29]],"pt":[],"n":null,"f":false},{"l":"龍平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍安","a":false,"r":[[12,15]],"pt":[],"n":null,"f":false},{"l":"龍岡","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"復旦國小","d":"平鎮區","p":"4928238","a":"五福（4-9、16），五權（20-22、25-26）","i":[{"l":"五福","a":false,"r":[[4,9],[16,16]],"pt":[],"n":null,"f":false},{"l":"五權","a":false,"r":[[20,22],[25,26]],"pt":[],"n":null,"f":false}]},{"s":"文化國小","d":"平鎮區","p":"4921750","a":"五權（12-19、24、27），◎五權（1-6）","i":[{"l":"五權","a":false,"r":[[12,19],[24,24],[27,27]],"pt":[],"n":null,"f":false},{"l":"五權","a":false,"r":[[1,6]],"pt":[],"n":null,"f":true}]},{"s":"新榮國小","d":"平鎮區","p":"2806200","a":"舊明（6-7、9-15），中榮（2-3、6-8、10-11）","i":[{"l":"舊明","a":false,"r":[[6,7],[9,15]],"pt":[],"n":null,"f":false},{"l":"中榮","a":false,"r":[[2,3],[6,8],[10,11]],"pt":[],"n":null,"f":false}]},{"s":"霄裡國小","d":"八德區","p":"3651101","a":"◎龍安（1-11）","i":[{"l":"龍安","a":false,"r":[[1,11]],"pt":[],"n":null,"f":true}]},{"s":"頭洲國小","d":"新屋區","p":"4901204","a":"◎過嶺（6-12）","i":[{"l":"過嶺","a":false,"r":[[6,12]],"pt":[],"n":null,"f":true}]},{"s":"上大國小","d":"觀音區","p":"4901174","a":"◎過嶺（6-12）","i":[{"l":"過嶺","a":false,"r":[[6,12]],"pt":[],"n":null,"f":true}]}],"中":[{"s":"新明國中","d":"中壢區","p":"4936194","a":"永興，新明，光明，三民，五權(4-27)，五福，永光，舊明","i":[{"l":"永興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"新明","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"光明","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"三民","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"五權","a":false,"r":[[4,27]],"pt":[],"n":null,"f":false},{"l":"五福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"永光","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"舊明","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"興南國中","d":"中壢區","p":"4629991","a":"興南，興國，興平，水尾，金華，新街，興和（1-6，15-18），◎興和（7-14），忠福，興福，幸福，永福，◎忠義（1-5、11-14），仁義（12-23）","i":[{"l":"興南","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興國","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"水尾","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"金華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"新街","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[1,6],[15,18]],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[7,14]],"pt":[],"n":null,"f":true},{"l":"忠福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"幸福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"永福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"忠義","a":false,"r":[[1,5],[11,14]],"pt":[],"n":null,"f":true},{"l":"仁義","a":false,"r":[[12,23]],"pt":[],"n":null,"f":false}]},{"s":"內壢國中","d":"中壢區","p":"4522494","a":"內壢，中原，忠孝，內定，成功，福德，復興，興華，復華，文化，和平，普忠（19），◎忠義（1-5、11-14），忠義（6-10、15-17）","i":[{"l":"內壢","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中原","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"忠孝","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"內定","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"成功","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"福德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"復興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"復華","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"文化","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"和平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普忠","a":false,"r":[[19,19]],"pt":[],"n":null,"f":false},{"l":"忠義","a":false,"r":[[1,5],[11,14]],"pt":[],"n":null,"f":true},{"l":"忠義","a":false,"r":[[6,10],[15,17]],"pt":[],"n":null,"f":false}]},{"s":"自強國中","d":"中壢區","p":"4553494","a":"興仁，中正，中山，中興，篤行，自立，自信，自強，莊敬，自治，仁德，仁和，仁祥，華勛，仁愛（1-6、8-20），華愛，仁美（24-25），◎仁美（22-23、26）","i":[{"l":"興仁","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中正","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中山","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"篤行","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自立","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自信","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自強","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"莊敬","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"自治","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁和","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁祥","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"華勛","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[1,6],[8,20]],"pt":[],"n":null,"f":false},{"l":"華愛","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[24,25]],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[22,23],[26,26]],"pt":[],"n":null,"f":true}]},{"s":"大崙國中","d":"中壢區","p":"4982840","a":"內厝，月眉，山東，◎過嶺（5-7），芝芭（10）","i":[{"l":"內厝","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"月眉","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"山東","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"過嶺","a":false,"r":[[5,7]],"pt":[],"n":null,"f":true},{"l":"芝芭","a":false,"r":[[10,10]],"pt":[],"n":null,"f":false}]},{"s":"東興國中","d":"中壢區","p":"4583500","a":"信義，正義，普仁，普強，普忠（1-18、20），明德，仁美（1-15、27-32），仁義（1-11），德義（1-15、20），仁愛（7、21-22），東興（1-3、22），健行，林森(4-6、8)，◎仁美（22-23、26），◎普慶","i":[{"l":"信義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"正義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普仁","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普強","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"普忠","a":false,"r":[[1,18],[20,20]],"pt":[],"n":null,"f":false},{"l":"明德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[1,15],[27,32]],"pt":[],"n":null,"f":false},{"l":"仁義","a":false,"r":[[1,11]],"pt":[],"n":null,"f":false},{"l":"德義","a":false,"r":[[1,15],[20,20]],"pt":[],"n":null,"f":false},{"l":"仁愛","a":false,"r":[[7,7],[21,22]],"pt":[],"n":null,"f":false},{"l":"東興","a":false,"r":[[1,3],[22,22]],"pt":[],"n":null,"f":false},{"l":"健行","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"林森","a":false,"r":[[4,6],[8,8]],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[22,23],[26,26]],"pt":[],"n":null,"f":true},{"l":"普慶","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"龍岡國中","d":"中壢區","p":"4562137","a":"龍岡(2-15、17-23)，龍東，龍平，龍安，中堅，龍昌（15-18）","i":[{"l":"龍岡","a":false,"r":[[2,15],[17,23]],"pt":[],"n":null,"f":false},{"l":"龍東","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍安","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中堅","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍昌","a":false,"r":[[15,18]],"pt":[],"n":null,"f":false}]},{"s":"龍興國中","d":"中壢區","p":"4575200","a":"振興，龍德，龍興，至善，後寮，龍慈，龍岡（1、16），龍昌（1-14、19-33），仁福，仁美（16-21），◎仁美（22-23、26），◎普慶，◎林森（10）","i":[{"l":"振興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍興","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"至善","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後寮","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍慈","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"龍岡","a":false,"r":[[1,1],[16,16]],"pt":[],"n":null,"f":false},{"l":"龍昌","a":false,"r":[[1,14],[19,33]],"pt":[],"n":null,"f":false},{"l":"仁福","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[16,21]],"pt":[],"n":null,"f":false},{"l":"仁美","a":false,"r":[[22,23],[26,26]],"pt":[],"n":null,"f":true},{"l":"普慶","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"林森","a":false,"r":[[10,10]],"pt":[],"n":null,"f":true}]},{"s":"過嶺國中","d":"中壢區","p":"4200026","a":"過嶺（1-4、8-15），◎過嶺（5-7），松嶺，五權(1-3)","i":[{"l":"過嶺","a":false,"r":[[1,4],[8,15]],"pt":[],"n":null,"f":false},{"l":"過嶺","a":false,"r":[[5,7]],"pt":[],"n":null,"f":true},{"l":"松嶺","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"五權","a":false,"r":[[1,3]],"pt":[],"n":null,"f":false}]},{"s":"青埔國中","d":"中壢區","p":"2871886","a":"芝芭(1-9、11-14)，洽溪，青埔，青航，青園，青溪，◎興和（7-14）","i":[{"l":"芝芭","a":false,"r":[[1,9],[11,14]],"pt":[],"n":null,"f":false},{"l":"洽溪","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青埔","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青航","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青園","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"青溪","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"興和","a":false,"r":[[7,14]],"pt":[],"n":null,"f":true}]},{"s":"中壢國中","d":"平鎮區","p":"4223214","a":"中壢，中榮，中建，石頭，中央，林森（1-3、7、9、11-23），◎林森（10），東興（4-21），普義，德義（16-19），新興","i":[{"l":"中壢","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中榮","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中建","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"石頭","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"中央","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"林森","a":false,"r":[[1,3],[7,7],[9,9],[11,23]],"pt":[],"n":null,"f":false},{"l":"林森","a":false,"r":[[10,10]],"pt":[],"n":null,"f":true},{"l":"東興","a":false,"r":[[4,21]],"pt":[],"n":null,"f":false},{"l":"普義","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"德義","a":false,"r":[[16,19]],"pt":[],"n":null,"f":false},{"l":"新興","a":true,"r":[],"pt":[],"n":null,"f":false}]}]},"大園區":{"births":{"小":"108.09.02 至 109.09.01","中":"102.09.02 至 103.09.01"},"notes":{"小":["◎後厝里、圳頭里全部為大園、溪海、五權、埔心、菓林、竹圍、內海、潮音國小自由學區。","◎大海里(10)為埔心、菓林國小自由學區。","◎溪海里（1）為潮音、溪海國小自由學區。"],"中":["◎後厝里、圳頭里、內海里全部為大園、竹圍國中自由學區。","◎北港里（3）、南港（1-4、6），新南(1-2）為大園、草漯國中自由學區。","◎埔心里（6-12、27、29）為大園、大竹國中自由學區。","◎和平里全部為大園、大崙國中自由學區。","◎埔心里（20-22）為青埔、大竹國中自由學區。"]},"小":[{"s":"大園國小","d":"大園區","p":"3862030","a":"大園，田心，仁德，橫峰，內海（13-15），埔心（17），◎後厝，◎圳頭","i":[{"l":"大園","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"田心","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"仁德","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"橫峰","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"內海","a":false,"r":[[13,15]],"pt":[],"n":null,"f":false},{"l":"埔心","a":false,"r":[[17,17]],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"溪海國小","d":"大園區","p":"3862174","a":"◎溪海（1），溪海（2-23），和平，◎後厝，◎圳頭","i":[{"l":"溪海","a":false,"r":[[1,1]],"pt":[],"n":null,"f":true},{"l":"溪海","a":false,"r":[[2,23]],"pt":[],"n":null,"f":false},{"l":"和平","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"五權國小","d":"大園區","p":"3812803","a":"五權，◎後厝，◎圳頭","i":[{"l":"五權","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"埔心國小","d":"大園區","p":"3812304","a":"埔心（1-16、18-29），大海(1-9)，◎大海(10)，竹圍(115.3.1生效)，◎後厝，◎圳頭","i":[{"l":"埔心","a":false,"r":[[1,16],[18,29]],"pt":[],"n":null,"f":false},{"l":"大海","a":false,"r":[[1,9]],"pt":[],"n":null,"f":false},{"l":"大海","a":false,"r":[[10,10]],"pt":[],"n":null,"f":true},{"l":"竹圍","a":true,"r":[],"pt":[],"n":"115.3.1生效","f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"菓林國小","d":"大園區","p":"3835096","a":"三石，◎大海(10)，菓林，◎後厝，◎圳頭","i":[{"l":"三石","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"大海","a":false,"r":[[10,10]],"pt":[],"n":null,"f":true},{"l":"菓林","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"竹圍國小","d":"大園區","p":"3935079","a":"海口，沙崙，◎後厝，◎圳頭","i":[{"l":"海口","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"沙崙","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"內海國小","d":"大園區","p":"3862844","a":"內海，◎後厝，◎圳頭","i":[{"l":"內海","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"潮音國小","d":"大園區","p":"3862834","a":"南港，新南，北港，◎溪海（1），◎後厝，◎圳頭","i":[{"l":"南港","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"新南","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"北港","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"溪海","a":false,"r":[[1,1]],"pt":[],"n":null,"f":true},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"青埔國小","d":"中壢區","p":"4531626","a":"青山（7-13）","i":[{"l":"青山","a":false,"r":[[7,13]],"pt":[],"n":null,"f":false}]},{"s":"青園國小","d":"中壢區","p":"2871741","a":"青山（1-6），青峰","i":[{"l":"青山","a":false,"r":[[1,6]],"pt":[],"n":null,"f":false},{"l":"青峰","a":true,"r":[],"pt":[],"n":null,"f":false}]}],"中":[{"s":"大園國中","d":"大園區","p":"386202","a":"大園，田心（1-20），仁德(7-19)，橫峰（1-22，23【自水源路592-900雙號（含之號）、656巷（全）、657巷（全）、660巷（全）、701-875單號（含之號）、741巷（全）、865巷（全）止共89戶】），溪海，埔心（1-5、13-19、23-26、28），大海（2-10），北港（1-2、4-20），南港（5、7-20），新南(3-18），◎南港（1-4、6），◎新南(1-2），◎埔心（6-12、27、29），◎和平，◎後厝，◎圳頭，◎內海，◎北港（3）","i":[{"l":"大園","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"田心","a":false,"r":[[1,20]],"pt":[],"n":null,"f":false},{"l":"仁德","a":false,"r":[[7,19]],"pt":[],"n":null,"f":false},{"l":"橫峰","a":false,"r":[[1,22]],"pt":[{"r":[23,23],"n":"自水源路592-900雙號（含之號）、656巷（全）、657巷（全）、660巷（全）、701-875單號（含之號）、741巷（全）、865巷（全）止共89戶"}],"n":null,"f":false},{"l":"溪海","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"埔心","a":false,"r":[[1,5],[13,19],[23,26],[28,28]],"pt":[],"n":null,"f":false},{"l":"大海","a":false,"r":[[2,10]],"pt":[],"n":null,"f":false},{"l":"北港","a":false,"r":[[1,2],[4,20]],"pt":[],"n":null,"f":false},{"l":"南港","a":false,"r":[[5,5],[7,20]],"pt":[],"n":null,"f":false},{"l":"新南","a":false,"r":[[3,18]],"pt":[],"n":null,"f":false},{"l":"南港","a":false,"r":[[1,4],[6,6]],"pt":[],"n":null,"f":true},{"l":"新南","a":false,"r":[[1,2]],"pt":[],"n":null,"f":true},{"l":"埔心","a":false,"r":[[6,12],[27,27],[29,29]],"pt":[],"n":null,"f":true},{"l":"和平","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"內海","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"北港","a":false,"r":[[3,3]],"pt":[],"n":null,"f":true}]},{"s":"竹圍國中","d":"大園區","p":"3835026","a":"三石，菓林，海口，沙崙，◎後厝，◎圳頭，◎內海","i":[{"l":"三石","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"菓林","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"海口","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"沙崙","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"後厝","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"圳頭","a":true,"r":[],"pt":[],"n":null,"f":true},{"l":"內海","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"青埔國中","d":"中壢區","p":"2871886","a":"五權（3-8、22、24），仁德(1-6)，五權（14-16、19鄰，以中正東路為分界，中正東路左側），◎埔心（20-22）、青山、橫峰（23【自中山南路二段22巷（全）、28號、56巷（全）、水源路902-930雙號、905-931單號止共41戶、大竹南路1282號】），青峰","i":[{"l":"五權","a":false,"r":[[3,8],[22,22],[24,24]],"pt":[],"n":null,"f":false},{"l":"仁德","a":false,"r":[[1,6]],"pt":[],"n":null,"f":false},{"l":"五權","a":false,"r":[[14,16],[19,19]],"pt":[],"n":"以中正東路為分界，中正東路左側","f":false},{"l":"埔心","a":false,"r":[[20,22]],"pt":[],"n":null,"f":true},{"l":"青山","a":true,"r":[],"pt":[],"n":null,"f":false},{"l":"橫峰","a":false,"r":[],"pt":[{"r":[23,23],"n":"自中山南路二段22巷（全）、28號、56巷（全）、水源路902-930雙號、905-931單號止共41戶、大竹南路1282號"}],"n":null,"f":false},{"l":"青峰","a":true,"r":[],"pt":[],"n":null,"f":false}]},{"s":"大崙國中","d":"中壢區","p":"4982840","a":"◎和平","i":[{"l":"和平","a":true,"r":[],"pt":[],"n":null,"f":true}]},{"s":"大竹國中","d":"蘆竹區","p":"3232764","a":"五權（1-2、9-13、17-18、20-21、23、25），大海（1），竹圍(115.3.1生效)，◎埔心（6-12、27、29），五權（14-16、19等4鄰【以中正東路為分界，中正東路右側】），◎埔心（20-22）","i":[{"l":"五權","a":false,"r":[[1,2],[9,13],[17,18],[20,21],[23,23],[25,25]],"pt":[],"n":null,"f":false},{"l":"大海","a":false,"r":[[1,1]],"pt":[],"n":null,"f":false},{"l":"竹圍","a":true,"r":[],"pt":[],"n":"115.3.1生效","f":false},{"l":"埔心","a":false,"r":[[6,12],[27,27],[29,29]],"pt":[],"n":null,"f":true},{"l":"五權","a":false,"r":[],"pt":[{"r":[19,19],"n":"以中正東路為分界，中正東路右側"},{"r":[14,16],"n":"以中正東路為分界，中正東路右側"}],"n":null,"f":false},{"l":"埔心","a":false,"r":[[20,22]],"pt":[],"n":null,"f":true}]},{"s":"草漯國中","d":"觀音區","p":"4830146","a":"◎北港（3），◎南港（1-4、6），◎新南(1-2）","i":[{"l":"北港","a":false,"r":[[3,3]],"pt":[],"n":null,"f":true},{"l":"南港","a":false,"r":[[1,4],[6,6]],"pt":[],"n":null,"f":true},{"l":"新南","a":false,"r":[[1,2]],"pt":[],"n":null,"f":true}]}]}};
+  var DISTS = Object.keys(DATA);
+  var CHIPS = {'中壢區':['青埔','青溪','青航','青園','洽溪','興和','水尾','芝芭'],'大園區':['青山','青峰','橫峰','五權','埔心','竹圍','仁德']};
+  var LV = {'小':'國小','中':'國中'};
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function inR(rs, n){ for(var i=0;i<rs.length;i++){ if(n>=rs[i][0] && n<=rs[i][1]) return true; } return false; }
+  function rtxt(rs){ return rs.map(function(r){ return r[0]===r[1]?String(r[0]):r[0]+'-'+r[1]; }).join('、'); }
+  function liList(d){
+    var set={}; ['小','中'].forEach(function(lv){ DATA[d][lv].forEach(function(rec){ rec.i.forEach(function(it){ set[it.l]=1; }); }); });
+    return Object.keys(set).sort(function(a,b){ return a.localeCompare(b,'zh-Hant'); });
+  }
+  function opts(sel, arr, cur){ sel.innerHTML=arr.map(function(x){ return '<option value="'+esc(x)+'"'+(x===cur?' selected':'')+'>'+esc(x)+'</option>'; }).join(''); }
+
+  /* 比對：回傳該里（及鄰）在某學制對應的學校 */
+  function match(d, lv, li, lin){
+    var out=[];
+    DATA[d][lv].forEach(function(rec){
+      rec.i.forEach(function(it){
+        if(it.l!==li) return;
+        var base={school:rec.s, phone:rec.p, free:!!it.f, sdist:rec.d};
+        if(it.a){ out.push(Object.assign({kind:'all', note:it.n||''}, base)); return; }
+        var parts=[]; if(it.r.length) parts.push(rtxt(it.r)+'鄰'+(it.n?'（'+it.n+'）':'')); it.pt.forEach(function(p){ parts.push(rtxt([p.r])+'鄰（須依門牌核對：'+p.n+'）'); });
+        var text=parts.join('；');
+        if(lin===null){ out.push(Object.assign({kind:'split', text:text}, base)); return; }
+        if(inR(it.r, lin)) { out.push(Object.assign({kind:it.n?'cond':'range', note:it.n||'', text:text}, base)); return; }
+        for(var k=0;k<it.pt.length;k++){ if(inR([it.pt[k].r], lin)){ out.push(Object.assign({kind:'cond', note:'須依門牌核對：'+it.pt[k].n}, base)); return; } }
+      });
+    });
+    return out;
+  }
+  function pill(c,t){ return '<span class="pill '+c+'">'+t+'</span>'; }
+  function levelCard(d, lv, li, lin){
+    var m=match(d,lv,li,lin);
+    var born=DATA[d].births[lv]||'';
+    var h='<div class="panel"><h3>'+LV[lv]+'學區</h3>';
+    if(!m.length){ return h+'<p class="note" style="margin:0;">115 學年度一覽表沒有查到「'+esc(li)+'」'+(lin!==null?'第 '+lin+' 鄰':'')+'的'+LV[lv]+'學區。請以戶籍門牌向教育局或學校確認，不要自行推定。</p></div>'; }
+    var fixed=m.filter(function(x){ return !x.free; }), free=m.filter(function(x){ return x.free; });
+    function line(x){
+      var tag = x.kind==='cond' ? pill('maybe','須依門牌／分界核對') : (x.kind==='split' ? pill('maybe','依鄰別而定') : (x.free ? pill('maybe','自由學區') : pill('ok','指定學區')));
+      var extra = x.kind==='split' ? '（'+esc(x.text)+'）' : (x.note?'<br><span class="note">'+esc(x.note)+'</span>':'');
+      var ph = x.phone ? ' <span class="note">電話 '+esc(x.phone)+'</span>' : '';
+      var loc = (x.sdist && x.sdist!==d) ? ' <span class="note">（位於'+esc(x.sdist)+'）</span>' : '';
+      return '<div class="verdict" style="border-color:var(--line);color:var(--ink);">'+tag+'<div><strong>'+esc(x.school)+'</strong>'+loc+extra+ph+'</div></div>';
+    }
+    if(fixed.length) h+=fixed.map(line).join('');
+    if(free.length){ h+='<p class="note" style="margin:10px 0 4px;"><strong>自由學區：</strong>可在下列學校擇一就讀（依各校招收規定）。</p>'+free.map(line).join(''); }
+    if(lin===null && m.some(function(x){ return x.kind==='split'; })) h+='<p class="note" style="margin:10px 0 0;"><strong>這個里依鄰別分屬不同學校</strong>，請在上方輸入鄰別，才能得到準確結果。</p>';
+    if(born) h+='<p class="note" style="margin:10px 0 0;">適用出生期間：'+esc(born)+'（民國）</p>';
+    return h+'</div>';
+  }
+  function notesFor(d, li){
+    var out=[]; ['小','中'].forEach(function(lv){ DATA[d].notes[lv].forEach(function(n){ if(n.indexOf(li)>-1) out.push(LV[lv]+'備註：'+n); }); });
+    return out;
+  }
+  function render(){
+    var d=T.val('s_dist'), li=T.val('s_li'), v=T.val('s_lin');
+    var lin = v===''? null : Math.max(0, Math.round(parseFloat(v)));
+    if(isNaN(lin)) lin=null;
+    var head='<div class="result"><div class="lead">你查的是</div><div class="big" style="font-size:clamp(1.3rem,5vw,1.8rem);font-family:inherit;font-weight:900;">'+esc(d)+' '+esc(li)+'里'+(lin!==null?' 第 '+lin+' 鄰':'（未選鄰別）')+'</div><div class="sub">資料來自桃園市教育局 115 學年度學區一覽表。</div></div>';
+    var cards=levelCard(d,'小',li,lin)+levelCard(d,'中',li,lin);
+    var ns=notesFor(d,li);
+    var nb = ns.length ? '<div class="panel"><h3>一覽表備註</h3><ul class="note" style="padding-left:1.3em;margin:0;line-height:1.9;">'+ns.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('')+'</ul></div>' : '';
+    T.html('scr', head+cards+nb);
+  }
+  function chips(){
+    var d=T.val('s_dist'), cur=T.val('s_li'), all=liList(d);
+    T.html('s_chips',(CHIPS[d]||[]).filter(function(x){ return all.indexOf(x)>-1; }).map(function(x){ return '<button type="button" class="tt-tab" data-li="'+esc(x)+'" style="min-height:36px;padding:6px 12px;margin:2px 4px 2px 0;">'+esc(x)+'</button>'; }).join(''));
+  }
+  function fillLi(keep){
+    var d=T.val('s_dist'), all=liList(d);
+    opts(T.$('s_li'), all, keep && all.indexOf(keep)>-1 ? keep : (all.indexOf('青埔')>-1?'青埔':all[0]));
+    chips();
+  }
+  opts(T.$('s_dist'), DISTS, '中壢區');
+  fillLi();
+  T.$('s_dist').addEventListener('change', function(){ fillLi(); render(); });
+  T.$('s_li').addEventListener('change', render);
+  T.$('s_lin').addEventListener('input', render);
+  T.$('s_chips').addEventListener('click', function(e){ var b=e.target.closest?e.target.closest('[data-li]'):null; if(!b) return; T.$('s_li').value=b.getAttribute('data-li'); render(); });
+  render();
+
+  /* 反查：學校 → 學區 */
+  function fillSc(){
+    var d=T.val('v_dist'), lv=T.val('v_lv');
+    opts(T.$('v_sc'), DATA[d][lv].map(function(r){ return r.s; }), T.val('v_sc'));
+  }
+  function renderV(){
+    var d=T.val('v_dist'), lv=T.val('v_lv'), sc=T.val('v_sc');
+    var rec=DATA[d][lv].filter(function(r){ return r.s===sc; })[0];
+    if(!rec){ T.html('vr',''); return; }
+    var groups=rec.i.map(function(it){
+      var rng = it.a ? '全里' : [it.r.length?rtxt(it.r)+'鄰':'' ].concat(it.pt.map(function(p){ return rtxt([p.r])+'鄰（須依門牌核對）'; })).filter(Boolean).join('、');
+      return '<li>'+(it.f?'<strong>◎自由學區　</strong>':'')+esc(it.l)+'里：'+esc(rng)+(it.n?'（'+esc(it.n)+'）':'')+'</li>';
+    }).join('');
+    T.html('vr','<div class="note" style="margin-bottom:6px;"><strong>'+esc(rec.s)+'</strong>'+(rec.sdist&&rec.sdist!==d?'（位於'+esc(rec.sdist)+'）':'')+(rec.p?'，電話 '+esc(rec.p):'')+'</div><ul class="note" style="padding-left:1.3em;margin:0;line-height:1.9;">'+groups+'</ul><p class="note" style="margin:10px 0 0;"><strong>官方原文：</strong>'+esc(rec.a)+'</p>');
+  }
+  opts(T.$('v_dist'), DISTS, '中壢區');
+  fillSc(); renderV();
+  T.$('v_dist').addEventListener('change', function(){ fillSc(); renderV(); });
+  T.$('v_lv').addEventListener('change', function(){ fillSc(); renderV(); });
+  T.$('v_sc').addEventListener('change', renderV);
+})();
+</script>
+<script>
+(function(){
+  var CATS=[
+    {k:'conv',n:'便利商店',c:'#E4572E',key:'shop',v:['convenience'],on:1},
+    {k:'super',n:'超市／量販／商場',c:'#F29E4C',key:'shop',v:['supermarket','department_store','mall','wholesale'],on:1},
+    {k:'market',n:'傳統市場',c:'#B5651D',key:'amenity',v:['marketplace'],on:1},
+    {k:'food',n:'餐飲小吃',c:'#D1495B',key:'amenity',v:['restaurant','fast_food','food_court','cafe'],on:0},
+    {k:'park',n:'公園綠地',c:'#2E933C',key:'leisure',v:['park','playground','garden'],on:1},
+    {k:'school',n:'學校（含幼兒園）',c:'#3A86FF',key:'amenity',v:['school','kindergarten','college','university'],on:1},
+    {k:'med',n:'醫療（醫院、診所、藥局）',c:'#C1121F',key:'amenity',v:['hospital','clinic','doctors','dentist','pharmacy'],on:1},
+    {k:'bus',n:'公車站',c:'#00A6A6',key:'highway',v:['bus_stop'],on:1},
+    {k:'rail',n:'捷運／高鐵／火車站',c:'#6A4C93',key:'railway',v:['station','halt'],on:1},
+    {k:'parking',n:'停車場',c:'#6C757D',key:'amenity',v:['parking'],on:0},
+    {k:'fin',n:'銀行／郵局',c:'#1B998B',key:'amenity',v:['bank','post_office'],on:0},
+    {k:'sport',n:'運動健身',c:'#8338EC',key:'leisure',v:['fitness_centre','sports_centre','swimming_pool','stadium'],on:0},
+    {k:'fuel',n:'加油站／充電站',c:'#444',key:'amenity',v:['fuel','charging_station'],on:0}
+  ];
+  var center={lat:25.0137,lon:121.2141}, map=null, layer=null, marker=null, circle=null, lastSummary='';
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  T.html('p_cats', CATS.map(function(c){ return '<label><input type="checkbox" data-k="'+c.k+'"'+(c.on?' checked':'')+'><span class="dot" style="background:'+c.c+'"></span>'+c.n+'</label>'; }).join(''));
+  function msg(t){ T.$('p_msg').textContent=t||''; }
+
+  if(typeof L==='undefined'){ T.html('mpr','<div class="gate stop">地圖元件沒有載入成功。這個工具需要連上網路（載入 Leaflet 與 OpenStreetMap 地圖），請確認網路後重新整理。</div>'); return; }
+  map=L.map('map').setView([center.lat,center.lon],16);
+  window.__poiMap=map;
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap 貢獻者'}).addTo(map);
+  layer=L.layerGroup().addTo(map);
+  function setCenter(lat,lon,zoom){
+    center={lat:lat,lon:lon};
+    if(marker) map.removeLayer(marker);
+    marker=L.marker([lat,lon]).addTo(map);
+    if(zoom) map.setView([lat,lon],zoom); else map.panTo([lat,lon]);
+  }
+  setCenter(center.lat,center.lon,16);
+  map.on('click', function(e){ setCenter(e.latlng.lat,e.latlng.lng); msg('已改成你點選的位置，按「查詢這個位置」。'); });
+  document.querySelector('#mpf').addEventListener('click', function(e){
+    var b=e.target.closest?e.target.closest('[data-lat]'):null; if(!b) return;
+    setCenter(parseFloat(b.getAttribute('data-lat')),parseFloat(b.getAttribute('data-lon')),16); msg('已定位，按「查詢這個位置」。');
+  });
+
+  /* 地址搜尋（OpenStreetMap Nominatim） */
+  function geocode(){
+    var q=T.val('p_q').trim(); if(!q){ msg('請先輸入地址或地標。'); return; }
+    msg('搜尋中…');
+    fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=tw&accept-language=zh-TW&q='+encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(a){ if(!a.length){ msg('找不到這個地址，試著改成路名或地標。'); return; } setCenter(parseFloat(a[0].lat),parseFloat(a[0].lon),17); msg('已定位到：'+a[0].display_name.slice(0,40)+'… 請確認標記位置，再按「查詢這個位置」。'); })
+      .catch(function(){ msg('搜尋失敗，請確認網路，或直接在地圖上點選位置。'); });
+  }
+  T.$('p_go').addEventListener('click', geocode);
+  T.$('p_q').addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); geocode(); } });
+
+  /* 距離 */
+  function dist(lat1,lon1,lat2,lon2){ var R=6371000, p=Math.PI/180, a=Math.sin((lat2-lat1)*p/2)*Math.sin((lat2-lat1)*p/2)+Math.cos(lat1*p)*Math.cos(lat2*p)*Math.sin((lon2-lon1)*p/2)*Math.sin((lon2-lon1)*p/2); return 2*R*Math.asin(Math.sqrt(a)); }
+  function classify(t){
+    var out=[]; CATS.forEach(function(c){
+      var x=t[c.key]; if(!x || c.v.indexOf(x)<0) return;
+      /* OSM 常把名牌專櫃標成 department_store，只保留名稱像百貨公司的 */
+      if(c.k==='super' && x==='department_store' && !/百貨|三越|遠百|SOGO|微風|漢神|廣場|購物/.test(t.name||'')) return;
+      out.push(c);
+    });
+    return out;
+  }
+  function buildQuery(sel,r){
+    var parts=sel.map(function(c){
+      var f = c.v.length===1 ? '["'+c.key+'"="'+c.v[0]+'"]' : '["'+c.key+'"~"^('+c.v.join('|')+')$"]';
+      return 'nwr'+f+'(around:'+r+','+center.lat+','+center.lon+');';
+    });
+    return '[out:json][timeout:25];('+parts.join('')+');out center 800;';
+  }
+  var ENDPOINTS=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+  function overpass(q, i){
+    var ctl=(typeof AbortController!=='undefined')?new AbortController():null, to=ctl?setTimeout(function(){ ctl.abort(); },30000):null;
+    return fetch(ENDPOINTS[i],{method:'POST',body:'data='+encodeURIComponent(q),headers:{'Content-Type':'application/x-www-form-urlencoded'},signal:ctl?ctl.signal:undefined})
+      .then(function(r){ if(to) clearTimeout(to); if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .catch(function(err){ if(to) clearTimeout(to); if(i+1<ENDPOINTS.length) return overpass(q,i+1); throw err; });
+  }
+
+  function run(){
+    var sel=CATS.filter(function(c){ var el=document.querySelector('#p_cats input[data-k="'+c.k+'"]'); return el && el.checked; });
+    if(!sel.length){ msg('請至少勾選一種設施。'); return; }
+    var r=parseInt(T.val('p_r'),10);
+    msg('查詢中，約需幾秒…'); T.$('p_run').disabled=true;
+    overpass(buildQuery(sel,r),0).then(function(data){
+      T.$('p_run').disabled=false; msg('');
+      layer.clearLayers(); if(circle) map.removeLayer(circle);
+      circle=L.circle([center.lat,center.lon],{radius:r,color:'#0073D6',weight:1,fillOpacity:.04}).addTo(map);
+      map.fitBounds(circle.getBounds());
+      var groups={}; sel.forEach(function(c){ groups[c.k]=[]; });
+      var seen={};
+      (data.elements||[]).forEach(function(el){
+        var lat=el.lat!==undefined?el.lat:(el.center&&el.center.lat), lon=el.lon!==undefined?el.lon:(el.center&&el.center.lon);
+        if(lat===undefined||lon===undefined) return;
+        var t=el.tags||{}; var cs=classify(t).filter(function(c){ return groups[c.k]; }); if(!cs.length) return;
+        var c=cs[0], d=dist(center.lat,center.lon,lat,lon);
+        var name=t['name:zh']||t.name||t.brand||'（未命名）';
+        var key=c.k+'|'+name+'|'+Math.round(lat*5000)+'|'+Math.round(lon*5000); if(seen[key]) return; seen[key]=1;
+        groups[c.k].push({name:name,d:d,lat:lat,lon:lon});
+        L.circleMarker([lat,lon],{radius:6,color:'#fff',weight:1,fillColor:c.c,fillOpacity:.95}).bindPopup('<strong>'+esc(name)+'</strong><br>'+c.n+'<br>約 '+Math.round(d)+' 公尺').addTo(layer);
+      });
+      var rows='', sum='【周邊機能】以所選位置為中心，半徑 '+r+' 公尺：'+String.fromCharCode(10);
+      sel.forEach(function(c){
+        var a=groups[c.k].sort(function(x,y){ return x.d-y.d; });
+        var top=a.slice(0,3).map(function(x){ return esc(x.name)+'（'+Math.round(x.d)+' m）'; }).join('、');
+        rows+='<tr><td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:'+c.c+';margin-right:6px;"></span>'+c.n+'</td><td>'+a.length+'</td><td style="white-space:normal;text-align:left;font-family:inherit;">'+(a.length?top:'—')+'</td></tr>';
+        sum+='・'+c.n+'：'+a.length+' 處'+(a.length?'，最近 '+a[0].name+'（約 '+Math.round(a[0].d)+' 公尺）':'')+String.fromCharCode(10);
+      });
+      sum+='（資料來源 OpenStreetMap，距離為直線距離，僅供參考）';
+      lastSummary=sum;
+      T.html('mpr','<div class="panel"><h3>半徑 '+r+' 公尺內的生活機能</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>設施</th><th>數量</th><th>最近的 3 處</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+        '<div class="actions"><button type="button" class="btn btn-ghost" id="p_copy">複製成文字（可貼到 LINE）</button><span class="note" id="p_cmsg"></span></div>'+
+        '<p class="note" style="margin:10px 0 0;">地圖上的彩色圓點可以點開看名稱與距離。資料可能不完整，實際請現場確認。</p></div>');
+      T.$('p_copy').addEventListener('click', function(){
+        var m=T.$('p_cmsg');
+        try{ navigator.clipboard.writeText(lastSummary).then(function(){ m.textContent='已複製'; }, function(){ m.textContent='無法自動複製'; }); }catch(e){ m.textContent='無法自動複製'; }
+      });
+    }).catch(function(err){
+      T.$('p_run').disabled=false;
+      msg('查詢失敗：可能是網路問題，或 OpenStreetMap 查詢服務暫時忙碌，請稍後再試。');
+    });
+  }
+  T.$('p_run').addEventListener('click', run);
+})();
+</script>
+<script>
+(function(){
+  var DATA=[
+    {t:'產權與謄本',why:'產權不清、被查封或抵押過重，輕則交易延宕，重則買了拿不到房子。',items:[
+      ['申請土地與建物謄本，確認所有權人與出售人是同一人','向地政事務所申請，或請仲介提供最新謄本'],
+      ['看「他項權利部」：抵押權金額、債權人，並確認過戶時如何塗銷',''],
+      ['確認沒有查封、假扣押、預告登記或其他限制登記',''],
+      ['是否為共有或持分？所有共有人是否都同意出售',''],
+      ['登記面積、主建物／附屬建物／公設比，與廣告面積逐項核對','']
+    ]},
+    {t:'建物現況與瑕疵',why:'漏水、結構與違建是最常見也最貴的糾紛，現場多看幾次、下雨後再看更準。',items:[
+      ['屋齡與結構（鋼筋混凝土、鋼骨、磚造），了解早期建物的耐震條件',''],
+      ['漏水、壁癌、天花板水痕、外牆與樑柱裂縫','天花板、窗框、牆角、浴室周邊最容易看出痕跡'],
+      ['是否為海砂屋、輻射屋；是否曾發生非自然死亡事件','要求賣方於不動產說明書與契約中如實揭露'],
+      ['有無增建、加蓋、違建，與使用執照、建物測量成果圖比對',''],
+      ['水電瓦斯管線、排水、熱水器、冷氣與附帶設備的實際狀況','']
+    ]},
+    {t:'價格與行情',why:'出價前先掌握同區域的實際成交價，才不會被「開價」帶著走。',items:[
+      ['查內政部實價登錄：同社區、同路段近 1 年的成交價','lvr.land.moi.gov.tw（內政部不動產交易實價查詢服務網）'],
+      ['換算成單價時扣除車位，並留意親友交易、急售等特殊註記',''],
+      ['比對屋況、樓層、格局、屋齡差異，抓出合理的議價空間',''],
+      ['同社區目前在售有幾戶、掛了多久，是你的議價籌碼',''],
+      ['了解賣方的出售原因與急迫性','']
+    ]},
+    {t:'周邊環境與嫌惡設施',why:'房子可以裝潢，但周遭環境改不了。日間、夜間、平日、假日各看一次。',items:[
+      ['都市計畫分區，以及周邊空地、預定地未來可能蓋什麼','可向地政或都發單位查詢都市計畫'],
+      ['高壓電塔、變電箱、加油站、廟宇、垃圾場、工廠等嫌惡設施',''],
+      ['淹水潛勢、土壤液化、斷層等天然災害資訊',''],
+      ['噪音：大馬路、鐵路、高鐵，以及桃園機場航道（青埔、大園一帶）',''],
+      ['交通動線、學區、生活機能，以及停車與出入是否方便','']
+    ]},
+    {t:'社區與管理',why:'管理好壞影響住起來的品質，也影響日後轉手價。',items:[
+      ['管理費、車位清潔費金額，賣方有無欠繳',''],
+      ['公共基金（修繕基金）餘額，近期是否有外牆、電梯、水塔等大修計畫',''],
+      ['車位類型（平面、機械）、有無獨立權狀、尺寸能否停得下你的車',''],
+      ['管委會運作狀況、住戶組成，有無社區糾紛或訴訟',''],
+      ['頂樓加蓋、公共空間被占用等現況','']
+    ]},
+    {t:'資金與稅費',why:'看中房子才發現錢不夠，或貸款核不到成數，是最常見的卡關。',items:[
+      ['算好自備款、稅費與裝修的總現金需求','可用「萬能房產計算機」試算'],
+      ['先向銀行詢問估價成數與利率，確認實際可貸金額（銀行估價可能低於成交價）',''],
+      ['符合資格的年輕族群，評估青安 3.0 的額度與補貼','可用「青安 3.0 資格檢測」'],
+      ['簽約前確認稅費由誰負擔：契稅、印花稅、代書費、土地增值稅、房地合一稅等，並寫進契約',''],
+      ['確認付款方式有履約保證或價金信託等保障','']
+    ]}
+  ];
+  var KEY='chk6_v1', state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ state={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var total=0; DATA.forEach(function(d){ total+=d.items.length; });
+  var root=T.$('chk');
+  root.innerHTML=DATA.map(function(d,i){
+    var rows=d.items.map(function(it,j){
+      var id='c'+i+'_'+j;
+      return '<div class="chk-row"><input type="checkbox" id="'+id+'" data-k="'+id+'"'+(state[id]?' checked':'')+'><label for="'+id+'">'+it[0]+(it[1]?'<span class="where">'+it[1]+'</span>':'')+'</label></div>';
+    }).join('');
+    return '<details class="chk-item" open><summary><span class="no">'+(i+1)+'</span>'+d.t+'<span class="cnt" id="cnt'+i+'"></span></summary><div class="chk-body"><p class="why">'+d.why+'</p>'+rows+'</div></details>';
+  }).join('');
+
+  function refresh(){
+    var done=0;
+    DATA.forEach(function(d,i){
+      var c=0; d.items.forEach(function(_,j){ if(state['c'+i+'_'+j]) c++; });
+      done+=c; T.$('cnt'+i).textContent=c+'/'+d.items.length;
+    });
+    T.$('chkTxt').textContent='已完成 '+done+' / '+total+' 項';
+    T.$('chkBar').style.width=(total?done/total*100:0)+'%';
+    T.$('chkHint').textContent = done===total ? '全部查完了，可以進入出價與議價階段' : '未查完前，不建議出價或簽約';
+  }
+  root.addEventListener('change', function(e){
+    var k=e.target.getAttribute('data-k'); if(!k) return;
+    if(e.target.checked) state[k]=1; else delete state[k];
+    save(); refresh();
+  });
+  T.$('chkReset').addEventListener('click', function(){
+    var rb=T.$('chkReset'); if(!rb.getAttribute('data-armed')){ rb.setAttribute('data-armed','1'); rb.textContent='再按一次，確認清除'; setTimeout(function(){ rb.removeAttribute('data-armed'); rb.textContent='全部重置'; }, 3000); return; } rb.removeAttribute('data-armed'); rb.textContent='全部重置';
+    state={}; save();
+    root.querySelectorAll('input[type=checkbox]').forEach(function(c){ c.checked=false; });
+    refresh();
+  });
+  T.$('chkPrint').addEventListener('click', function(){ window.print(); });
+  refresh();
+})();
+</script>
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.nav-tab')), secs={};
+  [].slice.call(document.querySelectorAll('.tool')).forEach(function(s){ secs[s.getAttribute('data-tool')]=s; });
+  function show(id, quiet){
+    if(!secs[id]) id='calc';
+    Object.keys(secs).forEach(function(k){ secs[k].hidden=(k!==id); });
+    btns.forEach(function(b){
+      if(b.getAttribute('data-go')===id){ b.setAttribute('aria-current','page'); try{ b.scrollIntoView({inline:'center',block:'nearest'}); }catch(e){} }
+      else b.removeAttribute('aria-current');
+    });
+    try{ localStorage.setItem('tool_last', id); }catch(e){}
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+    if(id==='poi' && window.__poiMap){ setTimeout(function(){ try{ window.__poiMap.invalidateSize(); }catch(e){} },60); }
+    if(!quiet){ try{ window.scrollTo(0,0); }catch(e){} }
+  }
+  document.addEventListener('click', function(e){
+    var a=e.target.closest ? e.target.closest('[data-go]') : null; if(!a) return;
+    e.preventDefault(); show(a.getAttribute('data-go'));
+  });
+  var h=(location.hash||'').replace('#',''), last='';
+  try{ last=localStorage.getItem('tool_last')||''; }catch(e){}
+  show(secs[h]?h:(secs[last]?last:'calc'), true);
+})();
+</script>
+
+</body>
+</html>
